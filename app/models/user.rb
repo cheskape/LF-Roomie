@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   #username may not use '@' symbol
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
+  validates_format_of :mobile_number, with: /^(09\d{9,9})$/, :multiline => true
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
