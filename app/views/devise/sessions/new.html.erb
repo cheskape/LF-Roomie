@@ -36,6 +36,7 @@ Code History:
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
+    <%= @user.errors.full_messages.first if @user.errors.any? %>
     <% if flash[:alert] %>
         <p class="alert"><%= flash[:alert] %></p>
     <% end %>
