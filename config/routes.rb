@@ -1,5 +1,43 @@
+=begin
+MIT License
+
+Copyright (c) 2019 cheskape, Bryzeeboy, andiedioso
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+This is a course requirement for CS 192 Software Engineering II under the
+supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of
+Computer Science, College of Engineering, University of the Philippines,
+Diliman for the AY 2018-2019.
+
+*******************************************************************************************
+Code History:
+01/31/19
+    => file created from rails new blog
+    => set root to home/index
+*******************************************************************************************
+This file contains the routes for the application. This is where it tells stuff where to go.
+=end
 Rails.application.routes.draw do
-  devise_for :users
-  root to: "home#index"
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+    #added the routes from devise
+    devise_for :users
+    #set root to home/index
+    root to: "home#index"
+    # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

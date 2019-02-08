@@ -25,6 +25,13 @@
 #supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of
 #Computer Science, College of Engineering, University of the Philippines,
 #Diliman for the AY 2018-2019.
+#
+#*******************************************************************************************
+#Code History:
+#01/31/19
+#   => file created by rails new blog
+#*******************************************************************************************
+
 
 # PostgreSQL. Versions 9.1 and up are supported.
 #

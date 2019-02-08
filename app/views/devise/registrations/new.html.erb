@@ -26,32 +26,42 @@ supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of
 Computer Science, College of Engineering, University of the Philippines,
 Diliman for the AY 2018-2019.
 
+*******************************************************************************************
 Code History:
 01/31/19
-    -file created from devise gem
-    -added mobile number field
+    => file created from devise gem
+    => added mobile number field
+02/08/19
+    => added comments
+*******************************************************************************************
+This is the View file for signing up. This is where the form and frontend code is placed.
 -->
 
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <!--displays error messsages-->
     <%= devise_error_messages! %>
 
+    <!--form field for username-->
     <div class="field">
         <%= f.label :username %><br />
         <%= f.text_field :username%>
     </div>
 
+    <!--form field for mobile number-->
     <div class="field">
         <%= f.label :mobile_number %><br />
         <%= f.text_field :mobile_number%>
     </div>
 
+    <!--form field for email-->
     <div class="field">
         <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
 
+    <!--form field for password-->
     <div class="field">
         <%= f.label :password %>
         <% if @minimum_password_length %>
@@ -65,6 +75,7 @@ Code History:
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
 
+    <!--button for signing up-->
     <div class="actions">
         <%= f.submit "Sign up" %>
     </div>

@@ -26,19 +26,25 @@ supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of
 Computer Science, College of Engineering, University of the Philippines,
 Diliman for the AY 2018-2019.
 
+*******************************************************************************************
 Code History:
 01/31/19
-    -file created from generating rails model User
-    -added validation for username
-    -used devise gem that added devise code
-    -defined login
-    -defined a function to be used for logging in by username, email, or mobile number
+    => file created from generating rails model User
+    => added validation for username
+    => used devise gem that added devise code
+    => defined login
+    => defined a function to be used for logging in by username, email, or mobile number
+02/08/19
+    => added comments after each method
+*******************************************************************************************
+This file contains the model of User where the data related code for User will be placed.
 =end
 
 class User < ApplicationRecord
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
+    #checks if username and mobile number are present and unique
     validates :username, presence: :true, uniqueness: {case_sensitive: false}
     validates :mobile_number, presence: :true, uniqueness: {case_sensitive: false}
 
@@ -47,15 +53,25 @@ class User < ApplicationRecord
     #mobile number format of 09XXXXXXXXX
     validates_format_of :mobile_number, with: /^(09\d{9,9})$/, :multiline => true
 
+    #which modules in devise are available for use in the code
     devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable
 
     attr_writer :login
+    #...................#
+    # shorthand for     #
+    # def login=(value) #
+    #   @login = value  #
+    # end               #
+    #...................#
 
-    #access username, email, and mobile number from login
-    def login
+    def login #access username, email, and mobile number from login
         @login || self.username || self.email || self.mobile_number
     end
+    #...........................................................................#
+    # login()                                                                   #
+    #  => calling login gives acces to user's username, email,or mobilenumber   #
+    #...........................................................................#
 
     def self.find_for_database_authentication(warden_conditions)
         #duplicate warden conditions
@@ -70,4 +86,8 @@ class User < ApplicationRecord
             where(conditions.to_h).first
         end
     end
+    #...........................................................................#
+    # self.find_for_database_authentication(warden_conditions)                  #
+    #  => to be able to login using their username, email, or mobile number     #
+    #...........................................................................#
 end

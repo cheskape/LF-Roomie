@@ -26,12 +26,15 @@ supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of
 Computer Science, College of Engineering, University of the Philippines,
 Diliman for the AY 2018-2019.
 
+*******************************************************************************************
 Code History:
 01/31/19
-  -created file from generating controller
+    => created file from generating controller
+*******************************************************************************************
+This is the Home controller. This is the file that connects the model and views.
 =end
 
 class HomeController < ApplicationController
-  def index
-  end
+    def index
+    end
 end

@@ -26,31 +26,40 @@ supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of
 Computer Science, College of Engineering, University of the Philippines,
 Diliman for the AY 2018-2019.
 
+*******************************************************************************************
 Code History:
 01/31/19
-    -created file from devise gem
-    -changed email to login to allow logging in different ways
+    => created file from devise gem
+    => changed email to login to allow logging in different ways
+02/08/19
+    => added comments
+*******************************************************************************************
+This file is the View of the login. This is where the form and frontend code is placed.
 -->
 
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
+    <!--displays error and alert messsages-->
     <%= @user.errors.full_messages.first if @user.errors.any? %>
     <% if flash[:alert] %>
         <p class="alert"><%= flash[:alert] %></p>
     <% end %>
 
+    <!--form field for email, username, or mobile number-->
     <div class="field">
         <p>Login with username, email, or mobile number</p>
         <%= f.text_field :login %>
     </div>
 
+    <!--form field for the password-->
     <div class="field">
         <%= f.label :password %><br />
         <%= f.password_field :password, autocomplete: "current-password" %>
     </div>
 
+    <!--asks user if they want their account to be remembered-->
     <% if devise_mapping.rememberable? -%>
     <div class="field">
         <%= f.check_box :remember_me %>

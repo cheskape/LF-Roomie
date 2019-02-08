@@ -26,20 +26,35 @@ supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of
 Computer Science, College of Engineering, University of the Philippines,
 Diliman for the AY 2018-2019.
 
+*******************************************************************************************
 Code History:
 01/31/19
-    -file created from rails new LF:Roomie
-    -devise added initial code (before action, cofigure permitted parameters, protected)
+    => file created from rails new LF:Roomie
+    => devise added initial code (before action, cofigure permitted parameters, protected)
+02/08/19
+    => commented out devise_parameter_sanitizer for account update
+    => added comments
+*******************************************************************************************
+This file is the application's controller. This is where we assign the variables that will
+be used by the devise views.
+
 =end
 
 class ApplicationController < ActionController::Base
-  before_action :configure_permitted_parameters, if: :devise_controller?
+    #do configure_permitted_parameters if it's a devise controller
+    before_action :configure_permitted_parameters, if: :devise_controller?
 
-  protected
+    protected
 
-  def configure_permitted_parameters
-    added_attrs = [:username, :email, :mobile_number, :password, :password_confirmation, :remember_me]
-    devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
-    devise_parameter_sanitizer.permit :account_update, keys: added_attrs
-  end
+    def configure_permitted_parameters
+        #array of attributes
+        added_attrs = [:username, :email, :mobile_number, :password, :password_confirmation, :remember_me]
+        #only allow attributes from added_attrs to be used in sign up
+        devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
+        #devise_parameter_sanitizer.permit :account_update, keys: added_attrs
+    end
+    #...........................................................................#
+    # configure_permitted_parameters                                            #
+    #  => allows certain parameters to be used in the views                     #
+    #...........................................................................#
 end
