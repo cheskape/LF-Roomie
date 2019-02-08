@@ -46,6 +46,10 @@ class ApplicationController < ActionController::Base
 
     protected
 
+    #...........................................................................#
+    # configure_permitted_parameters [created 01/31/19]                                            #
+    #  => allows certain parameters to be used in the views                     #
+    #...........................................................................#
     def configure_permitted_parameters
         #array of attributes
         added_attrs = [:username, :email, :mobile_number, :password, :password_confirmation, :remember_me]
@@ -53,8 +57,4 @@ class ApplicationController < ActionController::Base
         devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
         #devise_parameter_sanitizer.permit :account_update, keys: added_attrs
     end
-    #...........................................................................#
-    # configure_permitted_parameters                                            #
-    #  => allows certain parameters to be used in the views                     #
-    #...........................................................................#
 end

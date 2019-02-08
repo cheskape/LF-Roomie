@@ -34,5 +34,5 @@ Code History:
 This file contains the model of the application.
 =end
 class ApplicationRecord < ActiveRecord::Base
-  self.abstract_class = true
+    self.abstract_class = true
 end

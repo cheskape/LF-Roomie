@@ -34,6 +34,7 @@ Code History:
     => used devise gem that added devise code
     => defined login
     => defined a function to be used for logging in by username, email, or mobile number
+       (self.find_for_database_authentication(warden_conditions))
 02/08/19
     => added comments after each method
 *******************************************************************************************
@@ -65,14 +66,18 @@ class User < ApplicationRecord
     # end               #
     #...................#
 
+    #...........................................................................#
+    # login [created 01/31/19]                                                  #
+    #  => calling login gives acces to user's username, email,or mobilenumber   #
+    #...........................................................................#
     def login #access username, email, and mobile number from login
         @login || self.username || self.email || self.mobile_number
     end
-    #...........................................................................#
-    # login()                                                                   #
-    #  => calling login gives acces to user's username, email,or mobilenumber   #
-    #...........................................................................#
 
+    #............................................................................#
+    # self.find_for_database_authentication(warden_conditions) [created 01/31/19]#
+    #  => to be able to login using their username, email, or mobile number      #
+    #............................................................................#
     def self.find_for_database_authentication(warden_conditions)
         #duplicate warden conditions
         conditions = warden_conditions.dup
@@ -86,8 +91,5 @@ class User < ApplicationRecord
             where(conditions.to_h).first
         end
     end
-    #...........................................................................#
-    # self.find_for_database_authentication(warden_conditions)                  #
-    #  => to be able to login using their username, email, or mobile number     #
-    #...........................................................................#
+
 end
