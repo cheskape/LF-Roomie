@@ -28,18 +28,29 @@ Diliman for the AY 2018-2019.
 
 *******************************************************************************************
 Code History:
-01/31/19
-    => file created from rails new blog
-    => set root to home/index
+02/20/2019
+    => file created from rails g controller
+    => added show and edit
 *******************************************************************************************
-This file contains the routes for the application. This is where it tells stuff where to go.
+This file contains the controller of basic information where it will connect the data of the user,
+basic information, and name and profile picture to the basic information page.
 =end
-Rails.application.routes.draw do
-  get 'basic_information/show'
-  get 'basic_information/edit'
-    #added the routes from devise
-    devise_for :users
-    #set root to home/index
-    root to: "home#index"
-    # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+class BasicInformationController < ApplicationController
+    def show
+        #if the user is signed in
+        if user_signed_in?
+            #get the user
+            @user = User.find(current_user.id)
+
+            #and get its name and profile picture
+            @name_and_pic = @user.name_and_profile_picture
+        else
+            #else if the user is not signed in return to root
+            redirect_to_root_path
+        end
+    end
+
+    def edit
+    end
 end

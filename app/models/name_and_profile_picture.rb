@@ -28,18 +28,18 @@ Diliman for the AY 2018-2019.
 
 *******************************************************************************************
 Code History:
-01/31/19
-    => file created from rails new blog
-    => set root to home/index
+02/19/2019
+    => created file
+    => added belongs_to :user
 *******************************************************************************************
-This file contains the routes for the application. This is where it tells stuff where to go.
+This file contains the model of the name and profile picture where the data related code for
+the name and profile picture will be placed.
 =end
-Rails.application.routes.draw do
-  get 'basic_information/show'
-  get 'basic_information/edit'
-    #added the routes from devise
-    devise_for :users
-    #set root to home/index
-    root to: "home#index"
-    # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+class NameAndProfilePicture < ApplicationRecord
+    #user owns name_and_profile_picture
+    belongs_to :users
+
+    #mount the uploader
+    mount_uploader :image, ImageUploader
 end
