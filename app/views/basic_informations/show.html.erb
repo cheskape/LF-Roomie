@@ -1,24 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @basic_information.user_id %>
+  <%= image_tag @basic_information.profile_pic_url %>
 </p>
 
 <p>
-  <strong>Firstname:</strong>
   <%= @basic_information.firstname %>
 </p>
 
 <p>
-  <strong>Lastname:</strong>
   <%= @basic_information.lastname %>
 </p>
 
-<p>
-  <strong>Profile pic:</strong>
-  <%= image_tag @basic_information.profile_pic_url %>
-</p>
+
 
 <p>
   <strong>Birthday:</strong>
@@ -35,5 +29,9 @@
   <%= @basic_information.sex %>
 </p>
 
-<%= link_to 'Edit', edit_basic_information_path(@basic_information) %> |
-<%= link_to 'Back', basic_informations_path %>
+<% @preferences.each do |preference|%>
+    <p><%= preference.prefer%>
+<% end %>
+
+<%= link_to 'Edit', edit_basic_information_path(@basic_information) %>
+<%= link_to 'Add Preferences', preferences_path %>

@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  preference: MyString
+  prefer: MyString
 
 two:
-  preference: MyString
+  prefer: MyString

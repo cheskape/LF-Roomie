@@ -35,11 +35,18 @@ Code History:
 This file contains the routes for the application. This is where it tells stuff where to go.
 =end
 Rails.application.routes.draw do
+  resources :preferences
+  get 'preference/add_preference'
     resources :basic_informations
     get "user/update-info", to:"basic_informations#edit", as:"basic_info_edit"
     get "user/add-info", to: "basic_informations#new", as:"basic_info_new"
+    get "user/basic-info", to:"basic_informations#new", as:"new_basic_info"
+    get "user/basic-info-view", to:"basic_informations#show", as:"view_basic_info"
     #added the routes from devise
     devise_for :users
+
+    get "preferences/add/:id", to: "preferences#add", as:"add_preference"
+    get "preferences/index", to: "preferences#index", as:"index_preference"
     #set root to home/index
     root to: "home#index"
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -1,39 +1,35 @@
-<p id="notice"><%= notice %></p>
+<p>
+  <%= image_tag @basic_information.profile_pic_url %>
+</p>
 
-<h1>Basic Informations</h1>
+<p>
+  <%= @basic_information.firstname %>
+</p>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Firstname</th>
-      <th>Lastname</th>
-      <th>Profile pic</th>
-      <th>Birthday</th>
-      <th>Address</th>
-      <th>Sex</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<p>
+  <%= @basic_information.lastname %>
+</p>
 
-  <tbody>
-    <% @basic_informations.each do |basic_information| %>
-      <tr>
-        <td><%= basic_information.user_id %></td>
-        <td><%= basic_information.firstname %></td>
-        <td><%= basic_information.lastname %></td>
-        <td><%= basic_information.profile_pic %></td>
-        <td><%= basic_information.birthday %></td>
-        <td><%= basic_information.address %></td>
-        <td><%= basic_information.sex %></td>
-        <td><%= link_to 'Show', basic_information %></td>
-        <td><%= link_to 'Edit', edit_basic_information_path(basic_information) %></td>
-        <td><%= link_to 'Destroy', basic_information, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
 
-<%= link_to 'New Basic Information', new_basic_information_path %>
+<p>
+  <strong>Birthday:</strong>
+  <%= @basic_information.birthday %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @basic_information.address %>
+</p>
+
+<p>
+  <strong>Sex:</strong>
+  <%= @basic_information.sex %>
+</p>
+
+<% @preferences.each do |preference|%>
+    <p><%= preference.prefer%>
+<% end %>
+
+<%= link_to 'Edit', edit_basic_information_path(@basic_information) %>
+<%= link_to 'Add Preferences', preferences_path %>
