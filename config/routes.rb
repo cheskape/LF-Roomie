@@ -35,8 +35,9 @@ Code History:
 This file contains the routes for the application. This is where it tells stuff where to go.
 =end
 Rails.application.routes.draw do
-  get 'basic_information/show'
-  get 'basic_information/edit'
+    resources :basic_informations
+    get "user/update-info", to:"basic_informations#edit", as:"basic_info_edit"
+    get "user/add-info", to: "basic_informations#new", as:"basic_info_new"
     #added the routes from devise
     devise_for :users
     #set root to home/index

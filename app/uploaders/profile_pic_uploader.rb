@@ -28,15 +28,17 @@ Diliman for the AY 2018-2019.
 
 *******************************************************************************************
 Code History:
-02/19/2019
-=> file created from rails g uploader image
+02/22/19
+    => created file from generating uploader
+    => included MiniMagick
 *******************************************************************************************
-This file contains the model of User where the data related code for User will be placed.
+This is the Home controller. This is the file that connects the model and views.
 =end
-class ImageUploader < CarrierWave::Uploader::Base
+class ProfilePicUploader < CarrierWave::Uploader::Base
     # Include RMagick or MiniMagick support:
     # include CarrierWave::RMagick
-    # include CarrierWave::MiniMagick
+    include CarrierWave::MiniMagick
+
 
     # Choose what kind of storage to use for this uploader:
     storage :file
@@ -63,20 +65,19 @@ class ImageUploader < CarrierWave::Uploader::Base
     #   # do something
     # end
 
+    #set profile picture to be 100x100
+    process resize_to_fit: [100,100]
+
     # Create different versions of your uploaded files:
-    # version :thumb do
-    #   process resize_to_fit: [50, 50]
-    # end
+    #version :thumb do
+    # process resize_to_fit: [50, 50]
+    #end
 
     # Add a white list of extensions which are allowed to be uploaded.
     # For images you might use something like this:
-    def extension_whitelist
-        %w(jpg jpeg gif png)
-    end
-
-    def content_type_whitelist
-        /image\//
-    end
+    # def extension_whitelist
+    #   %w(jpg jpeg gif png)
+    # end
 
     # Override the filename of the uploaded files:
     # Avoid using model.id or version_name here, see uploader/store.rb for details.

@@ -41,5 +41,6 @@ class NameAndProfilePicture < ApplicationRecord
     belongs_to :users
 
     #mount the uploader
-    mount_uploader :image, ImageUploader
+    mount_uploader :profile_picture, ImageUploader
+
 end

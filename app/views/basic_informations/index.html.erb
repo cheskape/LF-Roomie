@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Basic Informations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Profile pic</th>
+      <th>Birthday</th>
+      <th>Address</th>
+      <th>Sex</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @basic_informations.each do |basic_information| %>
+      <tr>
+        <td><%= basic_information.user_id %></td>
+        <td><%= basic_information.firstname %></td>
+        <td><%= basic_information.lastname %></td>
+        <td><%= basic_information.profile_pic %></td>
+        <td><%= basic_information.birthday %></td>
+        <td><%= basic_information.address %></td>
+        <td><%= basic_information.sex %></td>
+        <td><%= link_to 'Show', basic_information %></td>
+        <td><%= link_to 'Edit', edit_basic_information_path(basic_information) %></td>
+        <td><%= link_to 'Destroy', basic_information, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Basic Information', new_basic_information_path %>
