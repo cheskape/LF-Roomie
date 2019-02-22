@@ -1,4 +1,4 @@
-/*
+<!--
 MIT License
 Copyright (c) 2019 cheskape, Bryzeeboy, andiedioso
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,36 +22,58 @@ Computer Science, College of Engineering, University of the Philippines,
 Diliman for the AY 2018-2019.
 *******************************************************************************************
 Code History:
-02/20/19
-    => file created 
-    => added stylesheets
+01/31/19
+    => file created from devise gem
+    => added mobile number field
+02/08/19
+    => added comments
 *******************************************************************************************
 This is the View file for signing up. This is where the form and frontend code is placed.
-*/
+-->
 
-/*
-	The body of the whole app will be customized as specified in the code.
-*/
-body {
-    background-color: rgb(185, 28,28);
-    margin-top: 200px;
-    color: white;
-    font-family: Helvetica;
-}
+<h1>Welcome, new Roomie!</h1>
 
-/*
-	The h1 tags in the app will be designed with the font family Lato.
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <!--displays error messsages-->
+    <%= devise_error_messages! %>
 
-*/
-h1 {
-    font-family: 'Lato', sans-serif;
-    text-align: center;
-}
+    <!--form field for username-->
+    <div class="field">
+        <%= f.label :username %><br />
+        <%= f.text_field :username%>
+    </div>
 
-/*
-	The buttons should be aligned in the center
-*/
-button {
-    align-content: center;
-}
+    <!--form field for mobile number-->
+    <div class="field">
+        <%= f.label :mobile_number %><br />
+        <%= f.text_field :mobile_number%>
+    </div>
 
+    <!--form field for email-->
+    <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <!--form field for password-->
+    <div class="field">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+
+    <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+
+    <!--button for signing up-->
+    <div class="actions">
+         <button type="button" class="btn btn-secondary"> <%= f.submit "Sign up" %> </button>
+    </div>
+
+<% end %>
+
+<%= render "devise/shared/links" %>

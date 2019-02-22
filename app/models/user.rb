@@ -37,11 +37,16 @@ Code History:
        (self.find_for_database_authentication(warden_conditions))
 02/08/19
     => added comments after each method
+02/19/2019
+    => added has_one :name_and_profile_picture
 *******************************************************************************************
 This file contains the model of User where the data related code for User will be placed.
 =end
 
 class User < ApplicationRecord
+    #connects user and name_and_profile_picture together
+    has_one :basic_information
+
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 

@@ -1,0 +1,48 @@
+<%= form_with(model: basic_information, local: true) do |form| %>
+    <% if basic_information.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(basic_information.errors.count, "error") %> prohibited this basic_information from being saved:</h2>
+
+            <ul>
+                <% basic_information.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+
+    <div class="field">
+        <%= form.label :firstname %>
+        <%= form.text_field :firstname %>
+    </div>
+
+    <div class="field">
+        <%= form.label :lastname %>
+        <%= form.text_field :lastname %>
+    </div>
+
+    <div class="field">
+        <%= form.label :profile_pic %>
+        <%= form.file_field :profile_pic %>
+    </div>
+
+    <div class="field">
+        <%= form.label :birthday %>
+        <%= form.date_field :birthday %>
+    </div>
+
+    <div class="field">
+        <%= form.label :address %>
+        <%= form.text_area :address %>
+    </div>
+
+    <div class="field">
+        <%= form.label :sex %>
+        <%= form.text_field :sex %>
+    </div>
+
+    <div class="actions">
+        <%= form.submit %>
+    </div>
+<% end %>

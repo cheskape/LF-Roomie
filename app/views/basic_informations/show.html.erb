@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @basic_information.user_id %>
+</p>
+
+<p>
+  <strong>Firstname:</strong>
+  <%= @basic_information.firstname %>
+</p>
+
+<p>
+  <strong>Lastname:</strong>
+  <%= @basic_information.lastname %>
+</p>
+
+
+
+<p>
+  <strong>Birthday:</strong>
+  <%= @basic_information.birthday %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @basic_information.address %>
+</p>
+
+<p>
+  <strong>Sex:</strong>
+  <%= @basic_information.sex %>
+</p>
+
+<%= link_to 'Edit', edit_basic_information_path(@basic_information) %> |
+<%= link_to 'Back', basic_informations_path %>

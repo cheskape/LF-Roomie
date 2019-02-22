@@ -1,14 +1,18 @@
-/*
+=begin
 MIT License
+
 Copyright (c) 2019 cheskape, Bryzeeboy, andiedioso
+
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
+
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
+
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -16,42 +20,27 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
 This is a course requirement for CS 192 Software Engineering II under the
 supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of
 Computer Science, College of Engineering, University of the Philippines,
 Diliman for the AY 2018-2019.
+
 *******************************************************************************************
 Code History:
-02/20/19
-    => file created 
-    => added stylesheets
+02/19/2019
+    => created file
+    => added belongs_to :user
 *******************************************************************************************
-This is the View file for signing up. This is where the form and frontend code is placed.
-*/
+This file contains the model of the name and profile picture where the data related code for
+the name and profile picture will be placed.
+=end
 
-/*
-	The body of the whole app will be customized as specified in the code.
-*/
-body {
-    background-color: rgb(185, 28,28);
-    margin-top: 200px;
-    color: white;
-    font-family: Helvetica;
-}
+class NameAndProfilePicture < ApplicationRecord
+    #user owns name_and_profile_picture
+    belongs_to :users
 
-/*
-	The h1 tags in the app will be designed with the font family Lato.
+    #mount the uploader
+    mount_uploader :profile_picture, ImageUploader
 
-*/
-h1 {
-    font-family: 'Lato', sans-serif;
-    text-align: center;
-}
-
-/*
-	The buttons should be aligned in the center
-*/
-button {
-    align-content: center;
-}
-
+end
