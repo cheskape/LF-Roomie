@@ -18,6 +18,7 @@ class PreferencesController < ApplicationController
     end
 
     def add
+        flash[:notice] = "Successfully added preference!"
         if user_signed_in?
             @user = User.find(current_user.id)
             @preference = Preference.find(params[:id])

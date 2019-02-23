@@ -4,14 +4,15 @@ class BasicInformationsController < ApplicationController
     # GET /basic_informations
     # GET /basic_informations.json
     def index
-        @basic_information = BasicInformation.find(current_user.id)
+        @basic_information = BasicInformation.find_by(:user_id => current_user.id)
         @preferences = User.find(current_user.id).preferences
     end
 
     # GET /basic_informations/1
     # GET /basic_informations/1.json
     def show
-        @preferences = User.find(current_user.id).preferences
+        flash[:notice] = "Successfully ipdated information!"
+        redirect_to basic_informations_path
     end
 
     # GET /basic_informations/new
@@ -68,7 +69,7 @@ class BasicInformationsController < ApplicationController
     private
     # Use callbacks to share common setup or constraints between actions.
     def set_basic_information
-        @basic_information = BasicInformation.find(params[:id])
+        @basic_information = BasicInformation.find_by(:user_id => current_user.id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
