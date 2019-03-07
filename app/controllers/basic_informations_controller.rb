@@ -54,7 +54,7 @@ class BasicInformationsController < ApplicationController
     # GET /basic_informations/1.json
     def show
         #show a notice
-        flash[:notice] = "Successfully ipdated information!"
+        flash[:notice] = "Successfully updated information!"
         #redirect to index
         redirect_to basic_informations_path
     end
@@ -67,6 +67,7 @@ class BasicInformationsController < ApplicationController
 
     # GET /basic_informations/1/edit
     def edit
+       @basic_information = BasicInformation.find_by(:user_id => current_user.id)
     end
 
     # POST /basic_informations
@@ -91,6 +92,7 @@ class BasicInformationsController < ApplicationController
     # PATCH/PUT /basic_informations/1
     # PATCH/PUT /basic_informations/1.json
     def update
+        @basic_information = BasicInformation.find(params[:id])
         respond_to do |format|
             if @basic_information.update(basic_information_params)
                 format.html { redirect_to @basic_information, notice: 'Basic information was successfully updated.' }

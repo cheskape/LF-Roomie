@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
+<%= link_to 'Home', root_path %>
 
-<h1>Your Preferences</h1>
+<br>
+<h2>Your Preferences</h2>
 
 <table>
   <thead>
@@ -21,9 +23,8 @@
   </tbody>
 </table>
 
-
-<h1>All Preferences</h1>
-
+<br>
+<h2>All Preferences</h2>
 <table>
   <thead>
     <tr>
@@ -46,5 +47,5 @@
 
 <br>
 
-<%= link_to 'Suggest A New Preference', new_preference_path %>
-<%= link_to 'Back To Basic Information', basic_informations_path%>
+<%= link_to 'Suggest A New Preference', new_preference_path %> | 
+<%= link_to 'Back To Basic Information', basic_informations_path%> |

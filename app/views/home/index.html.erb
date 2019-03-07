@@ -28,17 +28,42 @@ Diliman for the AY 2018-2019.
 
 Code History:
 01/31/19
-    => file created from rails new LF:Roomie
-    => added Sign in, Sign up, amd Logout
+    -file created from rails new LF:Roomie
+    -added Sign in, Sign up, amd Logout
 02/22/19
-    => added link to basic info
--->
-<p id="notice"><%= notice %></p>
+    -added path toe edit basic information
+    -added html
+--> 
 
+<p id="notice"><%= notice %></p>
+<body>
+
+<h1> LF: Roomie </h1>
 <%if user_signed_in?%>
+
+  <%= link_to "View Basic Info", view_basic_info_path(current_user.id) %> |
+  <%= link_to "Edit Preferences", preferences_path(current_user.id) %> |
   <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-  <%= link_to "Basic Information", basic_informations_path %>
 <%else%>
-  <%= link_to "Sign in", new_user_session_path %>
-  <%= link_to "Sign up", new_user_registration_path %>
+    <div class="container">
+
+    <p style="text-align: center;"> Are you looking for a roomie? <br> LF: Roomie is a web-app that helps you browse for other "roomies" with the same preferences.</p>
+        
+        <!--<button type="button" class="btn">Basic</button>-->
+        <div class="text-center" style="margin-bottom: 10px">
+                <button type="button" class="btn btn-warning">
+  <%= link_to "Log-in", new_user_session_path %></button>
+        </div>
+       
+        <div class="text-center" style="margin-bottom: 10px">
+                <button type="button" class="btn btn-secondary">
+  <%= link_to "Sign up", new_user_registration_path %></button>    
+        </div>
+
+        
+         
+    </div>
+
+ 
 <%end%>
+</body>
