@@ -35,6 +35,9 @@ Code History:
 02/24/19
     => place notice in add function
     => add redirect to add function if no user is signed in
+03/07/19
+    => add remove function to remove preference association with user
+    => added checking if preference part of user's preference already
 *******************************************************************************************
 This file contains controller for preferences. This is where the model and views interact.
 =end
@@ -46,6 +49,7 @@ class PreferencesController < ApplicationController
     def index
         #display all the preferences
         @preferences = Preference.all
+        @user_preferences = User.find(current_user.id).preferences
     end
 
     # GET /preferences/1
@@ -64,9 +68,15 @@ class PreferencesController < ApplicationController
             #add the chosen preference to the user
             @user = User.find(current_user.id)
             @preference = Preference.find(params[:id])
-            @user.preferences << @preference
-            #show success notice
-            flash[:notice] = "Successfully added preference!"
+            #checks if preference to be added already exists
+            if !(@user.preferences.include?(@preference))
+                @user.preferences << @preference
+                #show success notice
+                flash[:notice] = "Successfully added preference!"
+            else
+                flash[:notice] = "Preference already part!"
+            end
+
         else
             flash[:notice] = "Create an account first to add a preference."
             redirect_to new_user_registration_path
@@ -93,6 +103,22 @@ class PreferencesController < ApplicationController
 
     # DELETE /preferences/1
     # DELETE /preferences/1.json
+    def remove
+        #check if user is signed in
+        if user_signed_in?
+            #find the current user
+            @user = current_user
+            #get the preference of the user we want to delete
+            @preference = @user.preferences.find(params[:id])
+            #destroy the preference
+            @user.preferences.destroy(@preference)
+            respond_to do |format|
+                format.html { redirect_to preferences_url, notice: 'Course was successfully destroyed.' }
+                format.json { head :no_content }
+            end
+        end
+    end
+
     def destroy
         @preference.destroy
         respond_to do |format|

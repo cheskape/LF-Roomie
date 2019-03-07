@@ -47,6 +47,9 @@ Rails.application.routes.draw do
 
     get "preferences/add/:id", to: "preferences#add", as:"add_preference"
     get "preferences/index", to: "preferences#index", as:"index_preference"
+
+    get "preferences/remove/:id", to:"preferences#remove", as:"destroy_preferences"
+
     #set root to home/index
     root to: "home#index"
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
