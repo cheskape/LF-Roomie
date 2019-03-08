@@ -48,6 +48,7 @@ class PreferencesController < ApplicationController
     # GET /preferences.json
     def index
         #display all the preferences
+        $current_preference = nil
         @preferences = Preference.all
         @user_preferences = User.find(current_user.id).preferences
     end
@@ -60,12 +61,10 @@ class PreferencesController < ApplicationController
     # GET /preferences/edit
     def edit
         @user = current_user
-        @current_preference = Preference.find(params[:id])
+        $current_preference = Preference.find(params[:id])
 
         @preference = Preference.new
         @preference.user_id = current_user.id
-
-        
     end
 
     # GET /preferences/new
@@ -88,12 +87,13 @@ class PreferencesController < ApplicationController
                 flash[:notice] = "Preference already part!"
             end
 
+            if not $current_preference.nil?
+                @user.preferences.destroy($current_preference)
+            end
+
         else
             flash[:notice] = "Create an account first to add a preference."
             redirect_to new_user_registration_path
-        end
-        if not @current_preference.nil?
-            @user.preferences.destroy(@current_preference)
         end
         redirect_to preferences_path
     end
