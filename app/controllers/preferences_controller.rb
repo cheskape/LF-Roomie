@@ -57,6 +57,12 @@ class PreferencesController < ApplicationController
     def show
     end
 
+    # GET /preferences/edit
+    def edit
+        @preference = Preference.new(preference_params)
+        @preference.user_id = current_user.id
+    end
+
     # GET /preferences/new
     def new
         @preference = Preference.new
@@ -113,7 +119,7 @@ class PreferencesController < ApplicationController
             #destroy the preference
             @user.preferences.destroy(@preference)
             respond_to do |format|
-                format.html { redirect_to preferences_url, notice: 'Course was successfully destroyed.' }
+                format.html { redirect_to preferences_url, notice: 'Preference was successfully removed.' }
                 format.json { head :no_content }
             end
         end

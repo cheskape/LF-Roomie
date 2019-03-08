@@ -37,6 +37,7 @@ This file contains the routes for the application. This is where it tells stuff 
 Rails.application.routes.draw do
     resources :preferences
     get 'preference/add_preference'
+
     resources :basic_informations
     get "user/update-info", to:"basic_informations#edit", as:"basic_info_edit"
     get "user/basic-info", to:"basic_informations#new", as:"new_basic_info"

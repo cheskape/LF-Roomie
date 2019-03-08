@@ -16,7 +16,8 @@
     <% @user_preferences.each do |preference| %>
       <tr>
         <td><%= preference.prefer %></td>
-        <td><%= link_to 'Show', preference %></td>
+        <td><%= link_to 'Show', preference %> |</td>
+        <td><%= link_to 'Edit', edit_preference_path(preference) %> |</td>
         <td><%= link_to 'Remove', destroy_preferences_path(preference)%></td>
       </tr>
     <% end %>
@@ -48,4 +49,4 @@
 <br>
 
 <%= link_to 'Suggest A New Preference', new_preference_path %> | 
-<%= link_to 'Back To Basic Information', basic_informations_path%> |
+<%= link_to 'Back To Basic Information', basic_informations_path%>
