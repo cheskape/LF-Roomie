@@ -39,14 +39,10 @@ This is the Basic Information homepage. It shows your profile picture and your b
 
 <p>
   <%= image_tag @basic_information.profile_pic_url %>
-</p-->
-
-<p>
-  <h2><%= @basic_information.firstname %></h2>
 </p>
 
 <p>
-  <h2><%= @basic_information.lastname %></h2>
+  <h2><%= @basic_information.firstname %> <%= @basic_information.lastname %></h2>
 </p>
 
 
