@@ -1,8 +1,12 @@
 source 'https://rubygems.org'
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+git_source(:github) { |repo| "https://github.com/cheskape/LF-Roomie.git" }
 
 ruby '2.6.1'
 
+#for resizing the images
+gem "mini_magick"
+# CarrierWave provides a simple and extremely flexible way to upload files
+gem 'carrierwave', '~> 1.0'     #added 02/19/2019
 # Authentication using Devise
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

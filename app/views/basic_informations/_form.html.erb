@@ -28,59 +28,68 @@ Diliman for the AY 2018-2019.
 
 *******************************************************************************************
 Code History:
-01/31/19
-    => file created from devise gem
-    => added mobile number field
-02/08/19
-    => added comments
+02/22/19
+    => created file
+03/01/19
+    => changed "sex" tect field to radio button
 *******************************************************************************************
-This is the View file for signing up. This is where the form and frontend code is placed.
+This is the Basic Information edit form. It contains different fields for your basic information
 -->
-<p id="notice"><%= notice %></p>
 
-<h2>Sign up</h2>
+<%= form_with(model: basic_information, local: true) do |form| %>
+    <% if basic_information.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(basic_information.errors.count, "error") %> prohibited this basic_information from being saved:</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <!--displays error messsages-->
-    <%= devise_error_messages! %>
+            <ul>
+                <% basic_information.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
 
-    <!--form field for username-->
+
     <div class="field">
-        <%= f.label :username %><br />
-        <%= f.text_field :username%>
-    </div>
-
-    <!--form field for mobile number-->
-    <div class="field">
-        <%= f.label :mobile_number %><br />
-        <%= f.text_field :mobile_number%>
-    </div>
-
-    <!--form field for email-->
-    <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
-
-    <!--form field for password-->
-    <div class="field">
-        <%= f.label :password %>
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password" %>
+        <%= form.label :firstname %>
+        <%= form.text_field :firstname, required: true %>
     </div>
 
     <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        <%= form.label :lastname %>
+        <%= form.text_field :lastname, required: true %>
     </div>
 
-    <!--button for signing up-->
+    <div class="field">
+        <%= form.label :profile_pic %>
+        <%= image_tag(@basic_information.profile_pic_url) if @basic_information.profile_pic? %>
+        <%= form.file_field :profile_pic, accept: 'image/jpeg,image/gif,image/png', style: "width:100%" %>
+
+        <p>
+        <label>
+          <%= form.check_box :remove_profile_pic %>
+          Remove profile_pic
+        </label>
+        </p>
+    </div>
+
+    <div class="field">
+        <%= form.label :birthday, "Birthday" %>
+        <%= form.date_field :birthday %>
+    </div>
+
+    <div class="field">
+        <%= form.label :address %>
+        <%= form.text_area :address %>
+    </div>
+
+    <div class="field">
+        <%= form.label :sex %>
+        <%= form.radio_button :sex, "Male" %> Male
+        <%= form.radio_button :sex, "Female" %> Female
+    </div>
+
     <div class="actions">
-        <button type="submit" class="btn btn-warning"> <%= f.submit "Sign up" %> </button>
+        <%= form.submit %>
     </div>
-
 <% end %>
-
-<%= render "devise/shared/links" %>

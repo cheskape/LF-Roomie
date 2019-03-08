@@ -28,33 +28,12 @@ Diliman for the AY 2018-2019.
 
 *******************************************************************************************
 Code History:
-01/31/19
-    => file created from rails new blog
-    => set root to home/index
+02/22/19
+    => file created from rails g scaffold
+03/08/19
+    => added relation to users
 *******************************************************************************************
-This file contains the routes for the application. This is where it tells stuff where to go.
 =end
-Rails.application.routes.draw do
-    resources :preferences
-    get 'preference/add_preference'
-
-    resources :basic_informations
-    get "user/update-info", to:"basic_informations#edit", as:"basic_info_edit"
-    get "user/basic-info", to:"basic_informations#new", as:"new_basic_info"
-    get "user/basic-info-view", to:"basic_informations#show", as:"view_basic_info"
-
-    #added the routes from devise
-    devise_for :users, controllers: { registrations: "registrations" }
-
-    get "preferences/add/:id", to: "preferences#add", as:"add_preference"
-    get "preferences/index", to: "preferences#index", as:"index_preference"
-
-    get "preferences/remove/:id", to:"preferences#remove", as:"destroy_preferences"
-    get "preferences/delete/:id", to: "preferences#destroy", as:"delete_preferences"
-
-    get "basic_informations/delete_profile_pic", to:"basic_informations#delete_profile_pic", as:"delete_profile_pic"
-
-    #set root to home/index
-    root to: "home#index"
-    # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+class Preference < ApplicationRecord
+    has_and_belongs_to_many :users
 end
