@@ -39,6 +39,7 @@
       <tr>
         <td><%= preference.prefer %></td>
         <td><%= link_to 'Show', preference %></td>
+        <<td><%= link_to 'Delete', delete_preferences_path(preference)%></td>
       </tr>
     <% end %>
   </tbody>
@@ -48,5 +49,5 @@
 
 <br>
 
-<%= link_to 'Suggest A New Preference', new_preference_path %> | 
+<%= link_to 'Suggest A New Preference', new_preference_path %> |
 <%= link_to 'Back To Basic Information', basic_informations_path%>

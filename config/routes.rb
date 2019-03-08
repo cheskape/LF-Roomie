@@ -50,6 +50,7 @@ Rails.application.routes.draw do
     get "preferences/index", to: "preferences#index", as:"index_preference"
 
     get "preferences/remove/:id", to:"preferences#remove", as:"destroy_preferences"
+    get "preferences/delete/:id", to: "preferences#destroy", as:"delete_preferences"
 
     get "basic_informations/delete_profile_pic", to:"basic_informations#delete_profile_pic", as:"delete_profile_pic"
 
