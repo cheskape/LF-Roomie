@@ -51,6 +51,8 @@ Rails.application.routes.draw do
 
     get "preferences/remove/:id", to:"preferences#remove", as:"destroy_preferences"
 
+    get "basic_informations/delete_profile_pic", to:"basic_informations#delete_profile_pic", as:"delete_profile_pic"
+
     #set root to home/index
     root to: "home#index"
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

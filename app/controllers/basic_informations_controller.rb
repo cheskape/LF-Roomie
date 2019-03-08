@@ -29,12 +29,14 @@ Diliman for the AY 2018-2019.
 *******************************************************************************************
 Code History:
 02/22/19
-    => file created from rails g scaffold
-    => set the user id in create to current user
+=> file created from rails g scaffold
+=> set the user id in create to current user
 02/24/19
-    => make index return basic info of current user
-    => place notice in show function
-    => redirect show to index
+=> make index return basic info of current user
+=> place notice in show function
+=> redirect show to index
+03/08/19
+=>edit update function to accomodate deleting of profile picture
 *******************************************************************************************
 This file contains controller for basic information. This is where the model and views interact.
 =end
@@ -54,7 +56,7 @@ class BasicInformationsController < ApplicationController
     # GET /basic_informations/1.json
     def show
         #show a notice
-        flash[:notice] = "Successfully updated information!"
+        #flash[:notice] = "Successfully updated information!"
         #redirect to index
         redirect_to basic_informations_path
     end
@@ -67,7 +69,7 @@ class BasicInformationsController < ApplicationController
 
     # GET /basic_informations/1/edit
     def edit
-       @basic_information = BasicInformation.find_by(:user_id => current_user.id)
+        @basic_information = BasicInformation.find_by(:user_id => current_user.id)
     end
 
     # POST /basic_informations
@@ -93,16 +95,20 @@ class BasicInformationsController < ApplicationController
     # PATCH/PUT /basic_informations/1.json
     def update
         @basic_information = BasicInformation.find(params[:id])
+        if params[:remove_profile_pic]
+            @user.remove_profile_pic!
+            @user.save
+        end
         respond_to do |format|
             if @basic_information.update(basic_information_params)
                 format.html { redirect_to @basic_information, notice: 'Basic information was successfully updated.' }
-                format.json { render :show, status: :ok, location: @basic_information }
             else
                 format.html { render :edit }
                 format.json { render json: @basic_information.errors, status: :unprocessable_entity }
             end
         end
     end
+
 
     # DELETE /basic_informations/1
     # DELETE /basic_informations/1.json
@@ -122,6 +128,6 @@ class BasicInformationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def basic_information_params
-        params.require(:basic_information).permit(:firstname, :lastname, :profile_pic, :birthday, :address, :sex)
+        params.require(:basic_information).permit(:firstname, :lastname, :profile_pic, :birthday, :address, :sex, :remove_profile_pic)
     end
 end
