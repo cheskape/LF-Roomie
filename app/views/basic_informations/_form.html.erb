@@ -62,7 +62,15 @@ This is the Basic Information edit form. It contains different fields for your b
 
     <div class="field">
         <%= form.label :profile_pic %>
-        <%= form.file_field :profile_pic %>
+        <%= image_tag(@basic_information.profile_pic_url) if @basic_information.profile_pic? %>
+        <%= form.file_field :profile_pic, accept: 'image/jpeg,image/gif,image/png', style: "width:100%" %>
+
+        <p>
+        <label>
+          <%= form.check_box :remove_profile_pic %>
+          Remove profile_pic
+        </label>
+        </p>
     </div>
 
     <div class="field">
