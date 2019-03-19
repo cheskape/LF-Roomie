@@ -43,6 +43,7 @@ Code History:
 
   <%= link_to "View Basic Info", view_basic_info_path(current_user.id) %> |
   <%= link_to "View Preferences", preferences_path(current_user.id) %> |
+  <%= link_to "Browse", browse_path(current_user.id) %> |
   <%= link_to "Logout", destroy_user_session_path, method: :delete %>
 <%else%>
     <div class="container">

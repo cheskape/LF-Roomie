@@ -1,0 +1,15 @@
+<%= link_to 'Home', root_path %> 
+
+<p>
+  <h1><%= image_tag(@user.profile_pic_url) if @user.profile_pic? %></h1>
+</p>
+
+<p>
+  <h2 style="text-align: center"><%= @user.firstname %> <%= @user.lastname %></h2>
+
+  <% $ctr += 1 %>
+</p>
+
+
+<%= link_to 'Swipe Left', browse_path(current_user.id) %> |
+<%= link_to 'Swipe Right', browse_path(current_user.id) %> 

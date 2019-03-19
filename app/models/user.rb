@@ -98,4 +98,8 @@ class User < ApplicationRecord
         end
     end
 
+    def getInfo
+        return basic_information
+    end
+
 end

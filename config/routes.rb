@@ -38,6 +38,8 @@ Rails.application.routes.draw do
     resources :preferences
     get 'preference/add_preference'
 
+    resources :browse
+
     resources :basic_informations
     get "user/update-info", to:"basic_informations#edit", as:"basic_info_edit"
     get "user/basic-info", to:"basic_informations#new", as:"new_basic_info"
