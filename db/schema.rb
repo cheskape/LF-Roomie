@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_08_024525) do
+ActiveRecord::Schema.define(version: 2019_03_20_042054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,13 @@ ActiveRecord::Schema.define(version: 2019_03_08_024525) do
     t.bigint "basic_information_id", null: false
     t.index ["basic_information_id"], name: "index_basic_informations_users_on_basic_information_id"
     t.index ["user_id"], name: "index_basic_informations_users_on_user_id"
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.integer "user1"
+    t.integer "user2"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "name_and_profile_pictures", force: :cascade do |t|
@@ -58,6 +65,15 @@ ActiveRecord::Schema.define(version: 2019_03_08_024525) do
     t.index ["user_id"], name: "index_preferences_users_on_user_id"
   end
 
+  create_table "swipes", force: :cascade do |t|
+    t.integer "swipee"
+    t.boolean "direction"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_swipes_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "mobile_number"
@@ -75,4 +91,5 @@ ActiveRecord::Schema.define(version: 2019_03_08_024525) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "swipes", "users"
 end

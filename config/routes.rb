@@ -39,6 +39,8 @@ Rails.application.routes.draw do
     get 'preference/add_preference'
 
     resources :browse
+    get 'browse/:id/swipeLeft' => 'browse#swipeLeft', as: :swipeLeft_browse
+    get 'browse/:id/swipeRight' => 'browse#swipeRight', as: :swipeRight_browse
 
     resources :basic_informations
     get "user/update-info", to:"basic_informations#edit", as:"basic_info_edit"

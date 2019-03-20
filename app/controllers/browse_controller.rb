@@ -1,15 +1,36 @@
 class BrowseController < ApplicationController
-	def index
-	end
 
 	$ctr = 0
-	def show
+
+
+	def index
+		$users = User.where.not(id: current_user.id).all
+
 		if $ctr >= $users.count
 			$ctr = 0
 		end
-
-		$users = User.where.not(id: current_user.id).all
-		@user = $users[$ctr].getInfo
-
+		
+		$swipes = Swipe.new
+		$swipes.user_id = current_user.id
+		$user = $users[$ctr].getInfo
 	end
+
+	def show
+		@matches = current_user.getMatches
+	end
+
+	def swipeLeft
+		redirect_to browse_index_path
+		$swipes.swipeDirection($user.user_id, false)
+		current_user.swipes << $swipes
+	end
+
+	def swipeRight
+		redirect_to browse_index_path
+		$swipes.swipeDirection($user.user_id, true)
+		current_user.swipes << $swipes
+	end
+
+
+
 end

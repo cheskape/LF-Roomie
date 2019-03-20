@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  swipee: 1
+  direction: false
+  user: one
+
+two:
+  swipee: 1
+  direction: false
+  user: two
