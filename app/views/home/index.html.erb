@@ -46,6 +46,7 @@ Code History:
   <%= link_to "View Preferences", preferences_path(current_user.id) %> |
   <%= link_to "Browse", browse_index_path %> |
   <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+  
 <%else%>
     <div class="container">
 

@@ -31,6 +31,8 @@ Code History:
 01/31/19
     => file created from rails new blog
     => set root to home/index
+03/21/19
+    => changed root to browse/index
 *******************************************************************************************
 This file contains the routes for the application. This is where it tells stuff where to go.
 =end
@@ -59,6 +61,6 @@ Rails.application.routes.draw do
     get "basic_informations/delete_profile_pic", to:"basic_informations#delete_profile_pic", as:"delete_profile_pic"
 
     #set root to home/index
-    root to: "home#index"
+    root to: "browse#index"
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

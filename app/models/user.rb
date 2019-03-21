@@ -49,6 +49,7 @@ class User < ApplicationRecord
     has_and_belongs_to_many :preferences
 
     has_many :swipes
+    has_many :matches
 
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -100,14 +101,10 @@ class User < ApplicationRecord
         end
     end
 
-    def getInfo
-        return basic_information
-    end
 
     def getMatches
-
+        matches.destroy_all
         right_swipes = []
-        matches = []
 
         self.swipes.each do |check|
             if check.direction?
@@ -116,13 +113,19 @@ class User < ApplicationRecord
         end
 
         right_swipes.each do |swiped|
+
             swiped.swipes.each do |test|
+
                 if test.direction? and test.swipee == self.id
-                    matches.push(User.find(test.user_id))
+                    m = Match.new
+                    m.user_id = self.id
+                    m.user2 = test.user_id
+                    matches << m
+                    break
                 end
+
             end
         end
-
         return matches
     end
 
