@@ -43,10 +43,11 @@ Code History:
 <%if user_signed_in?%>
 	
 	<!--%current_user.matches.destroy_all%-->
-	<!--% current_user.getMatches %-->
+
 	<% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>
+
     <%= yield %>
 
 	<% if not @ids.empty? %>

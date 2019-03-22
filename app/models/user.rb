@@ -50,6 +50,7 @@ class User < ApplicationRecord
 
     has_many :swipes
     has_many :matches
+    has_many :match_notifications
 
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

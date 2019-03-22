@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_21_133937) do
+ActiveRecord::Schema.define(version: 2019_03_22_024327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,14 @@ ActiveRecord::Schema.define(version: 2019_03_21_133937) do
     t.bigint "basic_information_id", null: false
     t.index ["basic_information_id"], name: "index_basic_informations_users_on_basic_information_id"
     t.index ["user_id"], name: "index_basic_informations_users_on_user_id"
+  end
+
+  create_table "match_notifications", force: :cascade do |t|
+    t.integer "user2"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_match_notifications_on_user_id"
   end
 
   create_table "matches", force: :cascade do |t|
@@ -92,6 +100,7 @@ ActiveRecord::Schema.define(version: 2019_03_21_133937) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "match_notifications", "users"
   add_foreign_key "matches", "users"
   add_foreign_key "swipes", "users"
 end
