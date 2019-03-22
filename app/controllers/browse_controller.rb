@@ -47,6 +47,26 @@ class BrowseController < ApplicationController
     def index
         if user_signed_in?
 
+        	#checks for new matches and notifies the user
+        	names = ""
+        	i = 0
+        	@notifs = current_user.match_notifications
+        	@notifs.each do |notif|
+        		i = 1
+        		matched = User.find(notif.user2)
+        		if @notifs.count == 1
+        			names = names + matched.basic_information.firstname + "!"
+        		else
+        			names = names + matched.basic_information.firstname + ", "
+        		end
+
+        		notif.destroy
+        	end
+
+        	if i == 1 
+        		flash[:success] = "You matched with " + names
+        	end
+
             #gets the swipes of the current user and saves it as an array for accessing
             @user_swipes_array = []
             if not current_user.swipes.empty?
@@ -115,8 +135,17 @@ class BrowseController < ApplicationController
                 m2.user_id = test.user_id
                 m2.user2 = current_user.id
                 @check.matches << m2
+
+                @match_notification = MatchNotification.new
+                @match_notification.user_id = test.user_id
+                @match_notification.user2 = current_user.id
+                User.find(test.user_id).match_notifications << @match_notification
+
+
                 flash[:success] = "You matched with " + @check.basic_information.firstname + "!"
-     			break
+
+
+                break
             end
         end
 
