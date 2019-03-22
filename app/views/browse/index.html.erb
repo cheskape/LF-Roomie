@@ -37,14 +37,18 @@ Code History:
 *******************************************************************************************
 -->
 
-<p id="notice"><%= notice %></p>
 <body>
 
 <h1> LF: Roomie </h1>
 <%if user_signed_in?%>
 	
-	<!--%current_user.swipes.destroy_all%-->
-	<% current_user.getMatches %>
+	<!--%current_user.matches.destroy_all%-->
+	<!--% current_user.getMatches %-->
+	<% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+    <%= yield %>
+
 	<% if not @ids.empty? %>
 		<p>
 		  <h1><%= image_tag($user.profile_pic_url) if $user.profile_pic? %></h1>
@@ -53,7 +57,6 @@ Code History:
 
 		<p>
 		  <h2 style="text-align: center"><%= $user.firstname %> <%= $user.lastname %></h2>
-		  <% $ctr += 1 %>
 		</p>
 
 
@@ -75,6 +78,7 @@ Code History:
 	<%= link_to "Logout", destroy_user_session_path, method: :delete %>
 	
 <%else%>
+	<p id="notice"><%= notice %></p>
     <div class="container">
 
     <p style="text-align: center;"> Are you looking for a roomie? <br> LF: Roomie is a web-app that helps you browse for other "roomies" with the same preferences.</p>

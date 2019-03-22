@@ -102,8 +102,7 @@ class User < ApplicationRecord
     end
 
 
-    def getMatches
-        matches.destroy_all
+    def getNewMatches
         right_swipes = []
 
         self.swipes.each do |check|

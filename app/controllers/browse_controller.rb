@@ -101,6 +101,25 @@ class BrowseController < ApplicationController
         redirect_to browse_index_path
         $swipes.swipeDirection($user.user_id, true)
         current_user.swipes << $swipes
+
+        #checks if the swiped user matches
+        @check = User.find($swipes.swipee)
+        @check.swipes.each do |test|
+        	if test.swipee == current_user.id or test.direction?
+                m1 = Match.new
+                m1.user_id = current_user.id
+                m1.user2 = test.user_id
+                current_user.matches << m1
+
+                m2 = Match.new
+                m2.user_id = test.user_id
+                m2.user2 = current_user.id
+                @check.matches << m2
+                flash[:success] = "You matched with " + @check.basic_information.firstname + "!"
+     			break
+            end
+        end
+
     end
 
 
