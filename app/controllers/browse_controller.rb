@@ -46,6 +46,8 @@ class BrowseController < ApplicationController
 
     def index
         if user_signed_in?
+    		current_user.matches.uniq
+    		current_user.swipes.uniq
 
         	#checks for new matches and notifies the user
         	names = ""
