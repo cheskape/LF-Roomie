@@ -1,0 +1,103 @@
+<!--
+MIT License
+
+Copyright (c) 2019 cheskape, Bryzeeboy, andiedioso
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+This is a course requirement for CS 192 Software Engineering II under the
+supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of
+Computer Science, College of Engineering, University of the Philippines,
+Diliman for the AY 2018-2019.
+
+*******************************************************************************************
+Code History:
+03/15/19
+    => file created
+03/20/19
+	=> 
+03/21/19
+	=> set as root path
+*******************************************************************************************
+-->
+
+<body>
+
+<h1> LF: Roomie </h1>
+<%if user_signed_in?%>
+	
+	<!--%current_user.matches.destroy_all%-->
+	<!--% current_user.getMatches %-->
+	<% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+    <%= yield %>
+
+	<% if not @ids.empty? %>
+		<p>
+		  <h1><%= image_tag($user.profile_pic_url) if $user.profile_pic? %></h1>
+		</p>
+
+
+		<p>
+		  <h2 style="text-align: center"><%= $user.firstname %> <%= $user.lastname %></h2>
+		</p>
+
+
+		<%= link_to 'Swipe Left', swipeLeft_browse_path(current_user.id) %> |
+		<%= link_to 'Swipe Right', swipeRight_browse_path(current_user.id)  %> 
+
+	<% else %>
+		<h2>There are no more users</h2>
+
+	<% end %>
+
+
+	<br><br>
+
+	<%= link_to 'Show Matches', browse_path(current_user.id)  %>
+	<br><br>
+	<%= link_to "View Basic Info", view_basic_info_path(current_user.id) %> |
+	<%= link_to "View Preferences", preferences_path(current_user.id) %> |
+	<%= link_to "Logout", destroy_user_session_path, method: :delete %>
+	
+<%else%>
+	<p id="notice"><%= notice %></p>
+    <div class="container">
+
+    <p style="text-align: center;"> Are you looking for a roomie? <br> LF: Roomie is a web-app that helps you browse for other "roomies" with the same preferences.</p>
+        
+        <!--<button type="button" class="btn">Basic</button>-->
+        <div class="text-center" style="margin-bottom: 10px">
+                <button type="button" class="btn btn-warning">
+  <%= link_to "Log-in", new_user_session_path %></button>
+        </div>
+       
+        <div class="text-center" style="margin-bottom: 10px">
+                <button type="button" class="btn btn-secondary">
+  <%= link_to "Sign up", new_user_registration_path %></button>    
+        </div>
+
+        
+         
+    </div>
+
+ 
+<%end%>
+</body>

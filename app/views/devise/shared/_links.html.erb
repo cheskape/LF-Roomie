@@ -35,9 +35,13 @@ This is the View file for signing up. This is where the form and frontend code i
 
 
 <%- if controller_name != 'sessions' %>
-<button type="submit" class="btn btn-warning">
+<!-- <<<<<<< HEAD -->
+<!-- <button type="submit" class="btn btn-warning">
   <%= link_to "Log in", new_session_path(resource_name) %><br />
  </button>
+======= -->
+  <button type="submit" class="btn btn-warning"> <%= link_to "Log in", new_session_path(resource_name) %></button><br />
+<!-- >>>>>>> f1bef4eac96a6f571f013abed7c050b64020d31f -->
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>

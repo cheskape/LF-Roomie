@@ -28,39 +28,20 @@ Diliman for the AY 2018-2019.
 
 *******************************************************************************************
 Code History:
-01/31/19
-    => file created from rails new blog
-    => set root to home/index
-03/21/19
-    => changed root to browse/index
+03/20/19
+	=> file created
+	=> added swipeDirection
 *******************************************************************************************
-This file contains the routes for the application. This is where it tells stuff where to go.
+This file contains the model for Swipe. 
 =end
-Rails.application.routes.draw do
-    resources :preferences
-    get 'preference/add_preference'
 
-    resources :browse
-    get 'browse/:id/swipeLeft' => 'browse#swipeLeft', as: :swipeLeft_browse
-    get 'browse/:id/swipeRight' => 'browse#swipeRight', as: :swipeRight_browse
+class Swipe < ApplicationRecord
+  belongs_to :user
 
-    resources :basic_informations
-    get "user/update-info", to:"basic_informations#edit", as:"basic_info_edit"
-    get "user/basic-info", to:"basic_informations#new", as:"new_basic_info"
-    get "user/basic-info-view", to:"basic_informations#show", as:"view_basic_info"
 
-    #added the routes from devise
-    devise_for :users, controllers: { registrations: "registrations" }
+	def swipeDirection(id, drt)
+		self.swipee = id
+		self.direction = drt
+	end
 
-    get "preferences/add/:id", to: "preferences#add", as:"add_preference"
-    get "preferences/index", to: "preferences#index", as:"index_preference"
-
-    get "preferences/remove/:id", to:"preferences#remove", as:"destroy_preferences"
-    get "preferences/delete/:id", to: "preferences#destroy", as:"delete_preferences"
-
-    get "basic_informations/delete_profile_pic", to:"basic_informations#delete_profile_pic", as:"delete_profile_pic"
-
-    #set root to home/index
-    root to: "browse#index"
-    # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

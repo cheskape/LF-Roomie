@@ -43,6 +43,7 @@ Code History:
 <h1> LF: Roomie </h1>
 <%if user_signed_in?%>
 
+<<<<<<< HEAD
 <!-- change this -->
 
   <!-- Button for Viewing Roomie's Basic Info -->
@@ -78,14 +79,21 @@ Code History:
   </div>
 
     
-    
+
+ <!-- 
+  <%= link_to "View Basic Info", view_basic_info_path(current_user.id) %> |
+  <%= link_to "View Preferences", preferences_path(current_user.id) %> |
+  <%= link_to "Browse", browse_index_path %> |
+  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+  
+>>>>>>> f1bef4eac96a6f571f013abed7c050b64020d31f
 <%else%>
     <div class="container">
 
-    <p style="text-align: center;"> Are you looking for a roomie? <br> LF: Roomie is a web-app that helps you browse for other potential "roomies".</p>
+    <p style="text-align: center;"> Are you looking for a roomie? <br> LF: Roomie is a web-app that helps you browse for other potential "roomies".</p> -->
         
         <!--<button type="button" class="btn">Basic</button>-->
-        <div class="text-center" style="margin-bottom: 10px">
+        <!-- <div class="text-center" style="margin-bottom: 10px">
                 <button type="button" class="btn btn-warning">
   <%= link_to "Log-in", new_user_session_path %></button>
         </div>
@@ -93,19 +101,19 @@ Code History:
         <div class="text-center" style="margin-bottom: 10px">
                 <button type="button" class="btn btn-secondary">
   <%= link_to "Sign up", new_user_registration_path %></button>    
-        </div>
+        </div> -->
 
         
          
-    </div>
+    <!-- </div> -->
 
 
 <!-- Inspired by https://codepen.io/transportedman/pen/NPWRGq -->
 
-<div class="carousel slide carousel-fade" data-ride="carousel">
+<!-- <div class="carousel slide carousel-fade" data-ride="carousel"> -->
 
     <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
+    <!-- <div class="carousel-inner" role="listbox">
         <div class="item active">
         </div>
         <div class="item">
@@ -113,7 +121,7 @@ Code History:
         <div class="item">
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- Remeber to put all the content you want on top of the slider below the slider code -->
 
