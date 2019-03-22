@@ -60,10 +60,22 @@ Code History:
 		  <h2 style="text-align: center"><%= $user.firstname %> <%= $user.lastname %></h2>
 		</p>
 
+<div class = "text-center">
 
-		<%= link_to 'Swipe Left', swipeLeft_browse_path(current_user.id) %> |
-		<%= link_to 'Swipe Right', swipeRight_browse_path(current_user.id)  %> 
+	<button type="button" class="btn btn-info" style = "align-content: center;">
+    <span class="glyphicon glyphicon-remove" style="align-content: center; color:#FFFFFF;">
+		<%= link_to '_', swipeLeft_browse_path(current_user.id) %> 
+	</span>
+	</button>
 
+	<button type="button" class="btn btn-success" style = "align-content: center;">
+    <span class="glyphicon glyphicon-ok" style="align-content: center; color:#FFFFFF;">
+		<%= link_to '_', swipeRight_browse_path(current_user.id)  %> 
+	</span>
+	</button>
+
+
+</div>
 	<% else %>
 		<h2>There are no more users</h2>
 
@@ -72,11 +84,35 @@ Code History:
 
 	<br><br>
 
+<div class = "text-center">
+
+	<button type="button" class="btn btn-danger" style = "align-content: center;">
+    <span class="glyphicon glyphicon-heart" style="align-content: center; color:#FFFFFF;">
 	<%= link_to 'Show Matches', browse_path(current_user.id)  %>
+	</span>
+	</button>
+	
 	<br><br>
-	<%= link_to "View Basic Info", view_basic_info_path(current_user.id) %> |
-	<%= link_to "View Preferences", preferences_path(current_user.id) %> |
+
+	<button type="button" class="btn btn-warning" style = "align-content: center;">
+    <span class="glyphicon glyphicon-user" style="align-content: center; color:#FFFFFF;">
+	<%= link_to "View Basic Info", view_basic_info_path(current_user.id) %> 
+	</span>
+	</button>
+
+
+	<button type="button" class="btn btn-warning" style = "align-content: center;">
+    <span class="glyphicon glyphicon-star" style="align-content: center; color:#FFFFFF;">
+	<%= link_to "View Preferences", preferences_path(current_user.id) %>
+	</span>
+	</button>
+
+	<button type="button" class="btn btn-warning" style = "align-content: center;">
+    <span class="glyphicon glyphicon-circle-arrow-right" style="align-content: center; color:#FFFFFF;">
 	<%= link_to "Logout", destroy_user_session_path, method: :delete %>
+	</span>
+	</button>
+</div>
 	
 <%else%>
 	<p id="notice"><%= notice %></p>
