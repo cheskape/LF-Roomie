@@ -52,6 +52,8 @@ class User < ApplicationRecord
     has_many :matches
     has_many :match_notifications
 
+    acts_as_messageable
+
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 

@@ -35,6 +35,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 
+gem 'mailboxer'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

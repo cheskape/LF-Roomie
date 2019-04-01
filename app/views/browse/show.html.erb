@@ -61,21 +61,4 @@ Code History:
     <% end %>
   </tbody>
 
-    <thead>
-    <tr>
-      <th>Swipes</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @swipes.each do |swipe| %>
-      <tr>
-
-        <td><%= User.find(swipe.swipee).basic_information.firstname %>  <%= swipe.direction %></td>
-
-
-      </tr>
-    <% end %>
-  </tbody>
 </table>

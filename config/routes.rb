@@ -40,6 +40,10 @@ Rails.application.routes.draw do
     resources :preferences
     get 'preference/add_preference'
 
+    resources :conversations do
+        resources :messages
+    end
+
     resources :browse
     get 'browse/:id/swipeLeft' => 'browse#swipeLeft', as: :swipeLeft_browse
     get 'browse/:id/swipeRight' => 'browse#swipeRight', as: :swipeRight_browse
