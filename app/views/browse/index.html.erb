@@ -108,6 +108,12 @@ Code History:
 	</button>
 
 	<button type="button" class="btn btn-warning" style = "align-content: center;">
+    <span class="glyphicon glyphicon-envelope" style="align-content: center; color:#FFFFFF;">
+	<%= link_to "Inbox", mailbox_inbox_path %>
+	</span>
+	</button>
+
+	<button type="button" class="btn btn-warning" style = "align-content: center;">
     <span class="glyphicon glyphicon-circle-arrow-right" style="align-content: center; color:#FFFFFF;">
 	<%= link_to "Logout", destroy_user_session_path, method: :delete %>
 	</span>

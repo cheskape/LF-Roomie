@@ -131,4 +131,12 @@ class User < ApplicationRecord
         return matches
     end
 
+    def mailboxer_name
+        self.basic_information.firstname
+    end
+
+    def mailboxer_email(object)
+        self.email
+    end
+
 end
