@@ -1,20 +1,20 @@
-<% @receipts.each do |receipt| %>
+<% @receipts.reverse.each do |receipt| %>
     <% message = receipt.message %>
 
     <div class="media">
         <div class="media-left">
         <!-- user avators can go here -->
         <a href="#">
-            <%= image_tag(message.sender.basic_information.profile_pic_url) if message.sender.basic_information.profile_pic? %>
+            <%= image_tag(message.sender.basic_information.profile_pic_url) if message.sender.basic_information .profile_pic? %>
         </a>
         </div>
 
         <div class="media-body">
 
             <h4 class="media-heading">
-                <%= message.sender.basic_information.firstname %> <br>
-                    <small><b>Subject: </b><%= message.subject %></small><br>
-                    <small><b>Date: </b><%=  message.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></small>
+                <%= message.sender.basic_information.firstname %> 
+                <br>
+                <small><b>Date: </b><%=  message.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></small>
             </h4>
             <%= message.body %>
 

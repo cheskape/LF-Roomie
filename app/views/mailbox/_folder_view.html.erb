@@ -1,5 +1,9 @@
 <h1>MESSAGING</h1>
 
+<% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
+
 <div class="row">
   <div class="spacer"></div>
   <div class="col-md-12">
@@ -25,7 +29,12 @@
   </div>
 
   <div class ="col-md-4">
-    <%= link_to 'Home', root_path %>
+    <button type="button" class="btn btn-warning" style = "align-content: center;">
+      <span class="glyphicon glyphicon-home" style="align-content: center; color:#FFFFFF;">
+        <%= link_to 'Home', root_path %>
+      </span>
+    </button>
+    
   </div>
 
 </div>

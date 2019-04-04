@@ -1,18 +1,36 @@
 <ul class="nav nav-pills nav-stacked">
   <li class="<%= active_page(:inbox) %>">
-    <%= link_to mailbox_inbox_path do  %>
-        <span class="label label-danger pull-right"></span>
-        <em class="fa fa-inbox fa-lg"></em>
-        <span>Inbox</span>
-    <% end %>
+    <button type="button" class="btn btn-warning" style = "align-content: center;">
+        <span class="glyphicon glyphicon-envelope" style="align-content: center; color:#FFFFFF;">
+            <%= link_to mailbox_inbox_path do  %>
+                <span class="label label-danger pull-right"></span>
+                <em class="fa fa-inbox fa-lg"></em>
+                <span>Inbox</span>
+            <% end %>
+        </span>
+    </button>
   </li>
   
-  <li class="<%= active_page(:sent) %>">
-    <%= link_to mailbox_sent_path do %>
+  <!--li class="<%= active_page(:sent) %>">
+    <button type="button" class="btn btn-warning" style = "align-content: center;">
+        <span class="glyphicon glyphicon-arrow-right" style="align-content: center; color:#FFFFFF;">
+            <%= link_to mailbox_sent_path do %>
+                <em class="fa fa-paper-plane-o fa-lg"></em>
+                <span>Sent</span>
+            <% end %>
+        </span>
+    </button>
+  </li-->
 
-        <em class="fa fa-paper-plane-o fa-lg"></em>
-        <span>Sent</span>
-    <% end %>
+  <li class="<%= active_page(:trash) %>">
+    <button type="button" class="btn btn-warning" style = "align-content: center;">
+        <span class="glyphicon glyphicon-trash" style="align-content: center; color:#FFFFFF;">
+            <%= link_to mailbox_trash_path do %>
+                <em class="fa fa-trash-o fa-lg"></em>
+                <span>Trash</span>
+            <% end %>
+        </span>
+    </button>
   </li>
 
 </ul>
