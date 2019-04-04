@@ -28,6 +28,9 @@ Code History:
 
 3/20/19
     => added styles for forms
+
+04/04/2019
+    =>
 *******************************************************************************************
 This is the View file for signing up. This is where the form and frontend code is placed.
 */
@@ -107,6 +110,7 @@ h2 {
 
 p {
     margin-top: 10px;
+    text-align: center;
 }
 
 /*

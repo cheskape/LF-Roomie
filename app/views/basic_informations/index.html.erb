@@ -30,19 +30,24 @@ Diliman for the AY 2018-2019.
 Code History:
 02/22/19
     => created file
+
+04/05/19
+    => aligned text to center
 *******************************************************************************************
 This is the Basic Information homepage. It shows your profile picture and your basic information
 -->
 
 <p id="notice"><%= notice %></p>
+<div class="nav_bar">
 <%= link_to 'Home', root_path %>
-
+</div>
 <p>
     <%= image_tag(@basic_information.profile_pic_url) if @basic_information.profile_pic? %>
 </p>
 
 
 <p>
+  Hello,
   <h2><%= @basic_information.firstname %> <%= @basic_information.lastname %></h2>
 </p>
 
