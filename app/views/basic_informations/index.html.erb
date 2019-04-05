@@ -37,10 +37,13 @@ Code History:
 This is the Basic Information homepage. It shows your profile picture and your basic information
 -->
 
-<p id="notice"><%= notice %></p>
-<div class="nav_bar">
+<!-- Section for Navigation Bar -->
+<div class="topnav" id="myTopnav">
 <%= link_to 'Home', root_path %>
+<h4 style="text-align: center"> LF: Roomie</h4>
 </div>
+<p id="notice"><%= notice %></p>
+
 <p>
     <%= image_tag(@basic_information.profile_pic_url) if @basic_information.profile_pic? %>
 </p>

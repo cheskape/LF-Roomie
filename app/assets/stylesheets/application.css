@@ -29,8 +29,11 @@ Code History:
 3/20/19
     => added styles for forms
 
-04/04/2019
-    =>
+04/03/2019
+    => added backround gradient
+
+04/05/2019
+    => added styling for matches
 *******************************************************************************************
 This is the View file for signing up. This is where the form and frontend code is placed.
 */
@@ -132,6 +135,31 @@ button {
     color: black;
 }
 
+.topnav{
+    background-color: #333;
+    position: relative;
+    margin-top: 0px;
+}
+
+.matches-show{
+    text-align: center;
+    /*margin: 0px, 500px, 500px, 500px;*/
+    background: white;
+    width:300px;
+  padding: 10px 4px 50px 120px;
+  margin: 0px 500px 0px 500px;
+  color: black;
+  font-family: 'Raleway', sans-serif;
+
+
+  /*background: DarkSalmon;*/
+  border-top: px;
+  border-right: 4px;
+  border-bottom: 8px;
+  border-left: 16px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 /*.media-body{
     /*background: white;
     /*width:300px;
@@ -148,7 +176,7 @@ button {
   background: white;
   text-decoration-style: bold;
 
-}*/
+}
 
 .Buttons{
     margin-top: 10px;
@@ -237,7 +265,7 @@ button {
   padding: 10px;
   text-shadow: 2px 2px #000;
   color: #FFF;
-}*/
+}
 
 
 
