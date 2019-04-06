@@ -1,0 +1,41 @@
+<% chat = current_user %>
+<div class="media">
+    <div class="media-left">
+        <a href="#">
+            <% conversation.recipients.each do |u|%>
+                <% if not u == current_user %>
+                    <% chat = u %>
+                <% end %>
+            <%end%>
+            <%= image_tag(chat.basic_information.profile_pic_url) if chat.basic_information .profile_pic? %>
+        </a>
+    </div>
+
+    <div class="media-body">
+        <h4 class="media-heading">
+            <%= chat.basic_information.firstname %> <br>
+            <small><b>Date: </b><%=  conversation.messages.last.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></small>
+        </h4>
+        <%= conversation.messages.last.sender.basic_information.firstname %>: <%= truncate conversation.messages.last.body, length: 145 %>
+        <br>
+        <button type="button" class="btn btn-warning" style = "align-content: center;">
+            <span class="glyphicon glyphicon-eye-open" style="align-content: center; color:#FFFFFF;">
+                <%= link_to "View", conversation_path(conversation)  %>
+            </span>
+        </button>
+        
+    </div>
+</div>
+
+<div class="col-md-6 text-right">
+    <% if conversation.is_trashed?(current_user) %>
+        <%= link_to 'Untrash', untrash_conversation_path(conversation), class: 'btn btn-info', method: :post %>
+    <% else %>
+    <button type="button" class="btn btn-danger" style = "align-content: center;">
+        <span class="glyphicon glyphicon-trash" style="align-content: center; color:#FFFFFF;">
+            <%= link_to 'Move to trash', trash_conversation_path(conversation), method: :post, data: {confirm: 'Are you sure?'} %>
+        </span>
+    </button>
+        
+    <% end %>
+  </div>

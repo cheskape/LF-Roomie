@@ -43,6 +43,17 @@ be used by the devise views.
 class ApplicationController < ActionController::Base
     #do configure_permitted_parameters if it's a devise controller
     before_action :configure_permitted_parameters, if: :devise_controller?
+    helper_method :mailbox
+
+    private 
+    
+    def mailbox
+        @mailbox ||= current_user.mailbox
+    end
+
+    def conversation
+            @conversation ||= mailbox.conversations.find(params[:id])
+    end
 
     protected
 
@@ -57,4 +68,5 @@ class ApplicationController < ActionController::Base
         devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
         #devise_parameter_sanitizer.permit :account_update, keys: added_attrs
     end
+
 end

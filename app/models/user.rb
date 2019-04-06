@@ -48,6 +48,12 @@ class User < ApplicationRecord
     has_one :basic_information
     has_and_belongs_to_many :preferences
 
+    has_many :swipes
+    has_many :matches
+    has_many :match_notifications
+
+    acts_as_messageable
+
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
@@ -96,6 +102,41 @@ class User < ApplicationRecord
             #get the first record in conditions and return its value
             where(conditions.to_h).first
         end
+    end
+
+
+    def getNewMatches
+        right_swipes = []
+
+        self.swipes.each do |check|
+            if check.direction?
+                right_swipes.push(User.find(check.swipee))
+            end
+        end
+
+        right_swipes.each do |swiped|
+
+            swiped.swipes.each do |test|
+
+                if test.direction? and test.swipee == self.id
+                    m = Match.new
+                    m.user_id = self.id
+                    m.user2 = test.user_id
+                    matches << m
+                    break
+                end
+
+            end
+        end
+        return matches
+    end
+
+    def mailboxer_name
+        self.basic_information.firstname
+    end
+
+    def mailboxer_email(object)
+        self.email
     end
 
 end

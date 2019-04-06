@@ -31,12 +31,30 @@ Code History:
 01/31/19
     => file created from rails new blog
     => set root to home/index
+03/21/19
+    => changed root to browse/index
 *******************************************************************************************
 This file contains the routes for the application. This is where it tells stuff where to go.
 =end
 Rails.application.routes.draw do
     resources :preferences
     get 'preference/add_preference'
+
+    resources :conversations do
+        member do
+            post :reply
+            post :trash
+            post :untrash
+        end
+    end
+
+    get "mailbox/inbox" => "mailbox#inbox", as: :mailbox_inbox
+    get "mailbox/sent" => "mailbox#sent", as: :mailbox_sent
+    get "mailbox/trash" => "mailbox#trash", as: :mailbox_trash
+
+    resources :browse
+    get 'browse/:id/swipeLeft' => 'browse#swipeLeft', as: :swipeLeft_browse
+    get 'browse/:id/swipeRight' => 'browse#swipeRight', as: :swipeRight_browse
 
     resources :basic_informations
     get "user/update-info", to:"basic_informations#edit", as:"basic_info_edit"
@@ -55,6 +73,6 @@ Rails.application.routes.draw do
     get "basic_informations/delete_profile_pic", to:"basic_informations#delete_profile_pic", as:"delete_profile_pic"
 
     #set root to home/index
-    root to: "home#index"
+    root to: "browse#index"
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

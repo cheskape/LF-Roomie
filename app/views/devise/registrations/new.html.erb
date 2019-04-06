@@ -36,51 +36,61 @@ Code History:
 *******************************************************************************************
 This is the View file for signing up. This is where the form and frontend code is placed.
 -->
+<!-- {% load crispy_forms_tags %} -->
 <p id="notice"><%= notice %></p>
+<article class = "media content-section">
+    <div class = "media-body">
 
-<h2>Sign up</h2>
+    <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <!--displays error messsages-->
-    <%= devise_error_messages! %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <!--displays error messsages-->
+        <%= devise_error_messages! %>
 
-    <!--form field for username-->
-    <div class="field">
-        <%= f.label :username %><br />
-        <%= f.text_field :username%>
+        <!--form field for username-->
+        <div class="field">
+            <%= f.label :username %><br />
+            <%= f.text_field :username%>
+        </div>
+
+        <!--form field for mobile number-->
+        <div class="field">
+            <%= f.label :mobile_number %><br />
+            <%= f.text_field :mobile_number%>
+        </div>
+
+        <!--form field for email-->
+        <div class="field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+
+        <!--form field for password-->
+        <div class="field">
+            <%= f.label :password %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password" %>
+        </div>
+
+        <div class="field">
+            <%= f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </div>
+
+    <div class="Buttons">
+        <!--button for signing up-->
+        <div class>
+            <button type="submit" class="btn btn-primary"> <%= f.submit "Sign up" %> </button>
+        </div>
+        
+        <%= render "devise/shared/links" %>
+    </div>
     </div>
 
-    <!--form field for mobile number-->
-    <div class="field">
-        <%= f.label :mobile_number %><br />
-        <%= f.text_field :mobile_number%>
-    </div>
 
-    <!--form field for email-->
-    <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
-
-    <!--form field for password-->
-    <div class="field">
-        <%= f.label :password %>
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password" %>
-    </div>
-
-    <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
-
-    <!--button for signing up-->
-    <div class="actions">
-        <button type="submit" class="btn btn-warning"> <%= f.submit "Sign up" %> </button>
-    </div>
-
+</article>
 <% end %>
 
-<%= render "devise/shared/links" %>
+

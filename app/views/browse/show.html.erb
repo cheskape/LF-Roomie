@@ -28,55 +28,40 @@ Diliman for the AY 2018-2019.
 
 *******************************************************************************************
 Code History:
-02/22/19
-    => created file
+03/15/19
+    => file created
+    => shows users
+03/20/19
+	=> shows swiped users and swipes
+03/21/19
+	=> shows matches added
 
-04/05/19
-    => aligned text to center
 *******************************************************************************************
-This is the Basic Information homepage. It shows your profile picture and your basic information
 -->
 
-<!-- Section for Navigation Bar -->
-<div class="topnav" id="myTopnav">
-<%= link_to 'Home', root_path %>
-<h4 style="text-align: center"> LF: Roomie</h4>
+<%= link_to 'Home', root_path %> 
+
+<br>
+<h2 style = "color: white">MATCHES AND SWIPES</h2>
+<div class="matches-show">
+<table>
+  <thead>
+    <tr>
+      <th>Matches</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @matches.each do |match| %>
+      <tr>
+      	<% n = match.user2 %>
+        <td><%= User.find(n).basic_information.firstname %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+
 </div>
-<p id="notice"><%= notice %></p>
-
-<p>
-    <%= image_tag(@basic_information.profile_pic_url) if @basic_information.profile_pic? %>
-</p>
-
-
-<p>
-  Hello,
-  <h2><%= @basic_information.firstname %> <%= @basic_information.lastname %></h2>
-</p>
-
-
-
-<p>
-  <strong>Birthday:</strong>
-  <%= @basic_information.birthday %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @basic_information.address %>
-</p>
-
-<p>
-  <strong>Sex:</strong>
-  <%= @basic_information.sex %>
-</p>
-
-<p>
-  <strong>Preferences: </strong>
-</p>
-<% @preferences.each do |preference|%>
-    <p><%= preference.prefer%></p>
-<% end %>
-
-<%= link_to 'Edit', edit_basic_information_path(@basic_information) %> |
-<%= link_to 'Add Preferences', preferences_path %>

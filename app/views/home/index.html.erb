@@ -33,6 +33,8 @@ Code History:
 02/22/19
     -added path toe edit basic information
     -added html
+03/20/19
+    -added styling to buttons
 --> 
 
 <p id="notice"><%= notice %></p>
@@ -41,16 +43,57 @@ Code History:
 <h1> LF: Roomie </h1>
 <%if user_signed_in?%>
 
+<<<<<<< HEAD
+<!-- change this -->
+
+  <!-- Button for Viewing Roomie's Basic Info -->
+    <div class = "text-center">
+    <button type="button" class="btn btn-warning" style = "align-content: center;">
+    <span class="glyphicon glyphicon-circle-arrow-right" style="align-content: center; color:#FFFFFF;">
+      <%= link_to " View Basic Info", view_basic_info_path(current_user.id)%>
+    </span>
+    </button>
+
+  <!-- Button for Viewing Roomie's Basic Info -->
+    <button type="button" class="btn btn-warning" style = "align-content: center;">
+    <span class="glyphicon glyphicon-user" style="align-content: center; color:#FFFFFF;">
+    <%= link_to "View Preferences", preferences_path(current_user.id) %> 
+    </span>
+    </button>
+     
+
+    <!-- Button for Viewing Roomie's Basic Info -->
+     <button type="button" class="btn btn-warning" style = "align-content: center;">
+    <span class="glyphicon glyphicon-th-large" style="align-content: center; color:#FFFFFF;">
+    <%= link_to "Browse", browse_path(current_user.id) %>
+    </span>
+    </button> 
+
+
+    <button type="button" class="btn btn-warning" style = "align-content: center;">
+    <span class="glyphicon glyphicon-circle-arrow-left" style="align-content: center; color:#FFFFFF;">
+    <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+    </span>
+    </button>    
+    
+  </div>
+
+    
+
+ <!-- 
   <%= link_to "View Basic Info", view_basic_info_path(current_user.id) %> |
   <%= link_to "View Preferences", preferences_path(current_user.id) %> |
+  <%= link_to "Browse", browse_index_path %> |
   <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+  
+>>>>>>> f1bef4eac96a6f571f013abed7c050b64020d31f
 <%else%>
     <div class="container">
 
-    <p style="text-align: center;"> Are you looking for a roomie? <br> LF: Roomie is a web-app that helps you browse for other "roomies" with the same preferences.</p>
+    <p style="text-align: center;"> Are you looking for a roomie? <br> LF: Roomie is a web-app that helps you browse for other potential "roomies".</p> -->
         
         <!--<button type="button" class="btn">Basic</button>-->
-        <div class="text-center" style="margin-bottom: 10px">
+        <!-- <div class="text-center" style="margin-bottom: 10px">
                 <button type="button" class="btn btn-warning">
   <%= link_to "Log-in", new_user_session_path %></button>
         </div>
@@ -58,11 +101,33 @@ Code History:
         <div class="text-center" style="margin-bottom: 10px">
                 <button type="button" class="btn btn-secondary">
   <%= link_to "Sign up", new_user_registration_path %></button>    
-        </div>
+        </div> -->
 
         
          
+    <!-- </div> -->
+
+
+<!-- Inspired by https://codepen.io/transportedman/pen/NPWRGq -->
+
+<!-- <div class="carousel slide carousel-fade" data-ride="carousel"> -->
+
+    <!-- Wrapper for slides -->
+    <!-- <div class="carousel-inner" role="listbox">
+        <div class="item active">
+        </div>
+        <div class="item">
+        </div>
+        <div class="item">
+        </div>
     </div>
+</div> -->
+
+<!-- Remeber to put all the content you want on top of the slider below the slider code -->
+
+<!-- <div class="title">
+  <h1>This is Awesome</h1>
+</div> -->
 
  
 <%end%>

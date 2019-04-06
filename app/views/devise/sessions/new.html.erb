@@ -36,7 +36,7 @@ Code History:
 *******************************************************************************************
 This file is the View of the login. This is where the form and frontend code is placed.
 -->
-
+<div class="media-body">
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -67,9 +67,19 @@ This file is the View of the login. This is where the form and frontend code is 
     </div>
     <% end -%>
 
+   <div class="Buttons"> 
     <div class="actions">
+
+        <button type="submit" class="btn btn-primary">
         <%= f.submit "Log in" %>
+        </button>
+        <br>
+        <%= render "devise/shared/links" %>
     </div>
+    
+    </div>
+    
+</div>    
 <% end %>
 
-<%= render "devise/shared/links" %>
+

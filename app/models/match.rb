@@ -1,4 +1,4 @@
-<!--
+=begin
 MIT License
 
 Copyright (c) 2019 cheskape, Bryzeeboy, andiedioso
@@ -28,55 +28,12 @@ Diliman for the AY 2018-2019.
 
 *******************************************************************************************
 Code History:
-02/22/19
-    => created file
-
-04/05/19
-    => aligned text to center
+03/20/19
+	=> file created
 *******************************************************************************************
-This is the Basic Information homepage. It shows your profile picture and your basic information
--->
+This file contains the model for Match. 
+=end
 
-<!-- Section for Navigation Bar -->
-<div class="topnav" id="myTopnav">
-<%= link_to 'Home', root_path %>
-<h4 style="text-align: center"> LF: Roomie</h4>
-</div>
-<p id="notice"><%= notice %></p>
-
-<p>
-    <%= image_tag(@basic_information.profile_pic_url) if @basic_information.profile_pic? %>
-</p>
-
-
-<p>
-  Hello,
-  <h2><%= @basic_information.firstname %> <%= @basic_information.lastname %></h2>
-</p>
-
-
-
-<p>
-  <strong>Birthday:</strong>
-  <%= @basic_information.birthday %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @basic_information.address %>
-</p>
-
-<p>
-  <strong>Sex:</strong>
-  <%= @basic_information.sex %>
-</p>
-
-<p>
-  <strong>Preferences: </strong>
-</p>
-<% @preferences.each do |preference|%>
-    <p><%= preference.prefer%></p>
-<% end %>
-
-<%= link_to 'Edit', edit_basic_information_path(@basic_information) %> |
-<%= link_to 'Add Preferences', preferences_path %>
+class Match < ApplicationRecord
+	belongs_to :user
+end
