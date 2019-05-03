@@ -95,7 +95,8 @@ class BrowseController < ApplicationController
 
             #gets the user object of the id
             if not @ids.empty?
-            	$user = User.find(@id).basic_information            
+            	$user = User.find(@id).basic_information
+            	$pref = User.find(@id).preferences            
             end
                 
         end
@@ -111,23 +112,22 @@ class BrowseController < ApplicationController
     	#creates a new swipe object and adds it to the user's swipes
     	$swipes = Swipe.new
         $swipes.user_id = current_user.id
-        redirect_to browse_index_path
         $swipes.swipeDirection($user.user_id, false)
         current_user.swipes << $swipes
+        redirect_to browse_index_path
     end
 
     def swipeRight
     	#creates a new swipe object and adds it to the user's swipes
     	$swipes = Swipe.new
         $swipes.user_id = current_user.id
-        redirect_to browse_index_path
         $swipes.swipeDirection($user.user_id, true)
         current_user.swipes << $swipes
 
         #checks if the swiped user matches
         @check = User.find($swipes.swipee)
         @check.swipes.each do |test|
-        	if test.swipee == current_user.id or test.direction?
+        	if test.swipee == current_user.id and test.direction?
                 m1 = Match.new
                 m1.user_id = current_user.id
                 m1.user2 = test.user_id
@@ -150,6 +150,8 @@ class BrowseController < ApplicationController
                 break
             end
         end
+        
+        redirect_to browse_index_path
 
     end
 

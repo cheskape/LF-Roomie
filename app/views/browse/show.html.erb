@@ -35,14 +35,27 @@ Code History:
 	=> shows swiped users and swipes
 03/21/19
 	=> shows matches added
+04/05/19
+    => added messaging button
 
 *******************************************************************************************
 -->
 
-<%= link_to 'Home', root_path %> 
+
+<button type="button" class="btn btn-warning" style = "align-content: center;">
+    <span class="glyphicon glyphicon-home" style="align-content: center; color:#FFFFFF;">
+        <%= link_to 'Home', root_path %>
+    </span>
+</button>
+
+<button type="button" class="btn btn-warning" style = "align-content: center;">
+    <span class="glyphicon glyphicon-circle-arrow-right" style="align-content: center; color:#FFFFFF;">
+	    <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+	</span>
+</button>
 
 <br>
-<h2 style = "color: white">MATCHES AND SWIPES</h2>
+<h2 style = "color: white">MATCHES</h2>
 <div class="matches-show">
 <table>
   <thead>
@@ -55,8 +68,7 @@ Code History:
   <tbody>
     <% @matches.each do |match| %>
       <tr>
-      	<% n = match.user2 %>
-        <td><%= User.find(n).basic_information.firstname %></td>
+        <td><%= User.find(match.user2).basic_information.firstname %></td>
 
       </tr>
     <% end %>
@@ -65,3 +77,9 @@ Code History:
 </table>
 
 </div>
+
+<button type="button" class="btn btn-warning" style = "align-content: center;">
+    <span class="glyphicon glyphicon-envelope" style="align-content: center; color:#FFFFFF;">
+        <%= link_to "Messaging", mailbox_inbox_path %>
+    </span>
+</button>

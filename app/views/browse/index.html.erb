@@ -52,17 +52,26 @@ Code History:
 
 	<% if not @ids.empty? %>
 		<p>
-		  <h1><%= image_tag($user.profile_pic_url) if $user.profile_pic? %></h1>
+		    <h1><%= image_tag($user.profile_pic_url) if $user.profile_pic? %></h1>
 		</p>
 
 
 		<p>
-		  <h2 style="text-align: center"><%= $user.firstname %> <%= $user.lastname %></h2>
+		    <h2 style="text-align: center"><%= $user.firstname %> <%= $user.lastname %></h2>
 		</p>
+
+		<p>
+			<h4 style="text-align: center">Preferences: </h4>
+		    <% $pref.each do |preference| %>
+		        <h6 style="text-align: center"><%= preference.prefer %></h6>
+		    <% end %>
+		</p>
+
+
 
 <div class = "text-center">
 
-	<button type="button" class="btn btn-info" style = "align-content: center;">
+	<!--button type="button" class="btn btn-info" style = "align-content: center;">
     <span class="glyphicon glyphicon-remove" style="align-content: center; color:#FFFFFF;">
 		<%= link_to '_', swipeLeft_browse_path(current_user.id) %> 
 	</span>
@@ -72,7 +81,16 @@ Code History:
     <span class="glyphicon glyphicon-ok" style="align-content: center; color:#FFFFFF;">
 		<%= link_to '_', swipeRight_browse_path(current_user.id)  %> 
 	</span>
-	</button>
+	</button-->
+    
+
+    <%= link_to swipeLeft_browse_path(current_user.id), class: "btn btn-info" do %>
+        <i class="glyphicon glyphicon-remove"></i> 
+    <% end %>
+
+	<%= link_to swipeRight_browse_path(current_user.id), class: "btn btn-success" do %>
+        <i class="glyphicon glyphicon-ok"></i> 
+    <% end %>
 
 
 </div>
@@ -87,36 +105,36 @@ Code History:
 <div class = "text-center">
 
 	<button type="button" class="btn btn-danger" style = "align-content: center;">
-    <span class="glyphicon glyphicon-heart" style="align-content: center; color:#FFFFFF;">
-	<%= link_to 'Show Matches', browse_path(current_user.id)  %>
-	</span>
+        <span class="glyphicon glyphicon-heart" style="align-content: center; color:#FFFFFF;">
+	        <%= link_to 'Show Matches', browse_path(current_user.id)  %>
+	    </span>
 	</button>
 	
 	<br><br>
 
 	<button type="button" class="btn btn-warning" style = "align-content: center;">
-    <span class="glyphicon glyphicon-user" style="align-content: center; color:#FFFFFF;">
-	<%= link_to "View Basic Info", view_basic_info_path(current_user.id) %> 
-	</span>
+        <span class="glyphicon glyphicon-user" style="align-content: center; color:#FFFFFF;">
+	        <%= link_to "View Basic Info", view_basic_info_path(current_user.id) %> 
+	    </span>
 	</button>
 
 
 	<button type="button" class="btn btn-warning" style = "align-content: center;">
-    <span class="glyphicon glyphicon-star" style="align-content: center; color:#FFFFFF;">
-	<%= link_to "View Preferences", preferences_path(current_user.id) %>
-	</span>
+        <span class="glyphicon glyphicon-star" style="align-content: center; color:#FFFFFF;">
+	        <%= link_to "View Preferences", preferences_path(current_user.id) %>
+	    </span>
 	</button>
 
 	<button type="button" class="btn btn-warning" style = "align-content: center;">
-    <span class="glyphicon glyphicon-envelope" style="align-content: center; color:#FFFFFF;">
-	<%= link_to "Inbox", mailbox_inbox_path %>
-	</span>
+        <span class="glyphicon glyphicon-envelope" style="align-content: center; color:#FFFFFF;">
+	        <%= link_to "Messaging", mailbox_inbox_path %>
+	    </span>
 	</button>
 
 	<button type="button" class="btn btn-warning" style = "align-content: center;">
-    <span class="glyphicon glyphicon-circle-arrow-right" style="align-content: center; color:#FFFFFF;">
-	<%= link_to "Logout", destroy_user_session_path, method: :delete %>
-	</span>
+        <span class="glyphicon glyphicon-circle-arrow-right" style="align-content: center; color:#FFFFFF;">
+	        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+	    </span>
 	</button>
 </div>
 	

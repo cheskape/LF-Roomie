@@ -49,7 +49,6 @@ Rails.application.routes.draw do
     end
 
     get "mailbox/inbox" => "mailbox#inbox", as: :mailbox_inbox
-    get "mailbox/sent" => "mailbox#sent", as: :mailbox_sent
     get "mailbox/trash" => "mailbox#trash", as: :mailbox_trash
 
     resources :browse
@@ -60,6 +59,7 @@ Rails.application.routes.draw do
     get "user/update-info", to:"basic_informations#edit", as:"basic_info_edit"
     get "user/basic-info", to:"basic_informations#new", as:"new_basic_info"
     get "user/basic-info-view", to:"basic_informations#show", as:"view_basic_info"
+    #get "user/basic-info-show", to:"basic_informations#show", as:"show_basic_info"
 
     #added the routes from devise
     devise_for :users, controllers: { registrations: "registrations" }

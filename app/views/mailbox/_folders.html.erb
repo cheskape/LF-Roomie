@@ -1,36 +1,69 @@
+<!--
+MIT License
+Copyright (c) 2019 cheskape, Bryzeeboy, andiedioso
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+This is a course requirement for CS 192 Software Engineering II under the
+supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of
+Computer Science, College of Engineering, University of the Philippines,
+Diliman for the AY 2018-2019.
+*******************************************************************************************
+Code History:
+04/04/19
+  => file created
+
+04/05/19
+  => added buttons and glyphicons
+  
+*******************************************************************************************
+This is the View file that is sort of a "mini navbar". It contains the buttons used to go to inbox and trashbox
+-->
+
+
+    
 <ul class="nav nav-pills nav-stacked">
-  <li class="<%= active_page(:inbox) %>">
-    <button type="button" class="btn btn-warning" style = "align-content: center;">
-        <span class="glyphicon glyphicon-envelope" style="align-content: center; color:#FFFFFF;">
+    <!-- button to redirect to inbox -->
+    <li class="<%= active_page(:inbox) %>">
+        <button type="button" class="btn btn-warning" style = "align-content: center;">
             <%= link_to mailbox_inbox_path do  %>
                 <span class="label label-danger pull-right"></span>
                 <em class="fa fa-inbox fa-lg"></em>
                 <span>Inbox</span>
             <% end %>
-        </span>
-    </button>
-  </li>
-  
-  <!--li class="<%= active_page(:sent) %>">
-    <button type="button" class="btn btn-warning" style = "align-content: center;">
-        <span class="glyphicon glyphicon-arrow-right" style="align-content: center; color:#FFFFFF;">
-            <%= link_to mailbox_sent_path do %>
-                <em class="fa fa-paper-plane-o fa-lg"></em>
-                <span>Sent</span>
-            <% end %>
-        </span>
-    </button>
-  </li-->
+        </button>
+    </li>
 
-  <li class="<%= active_page(:trash) %>">
-    <button type="button" class="btn btn-warning" style = "align-content: center;">
-        <span class="glyphicon glyphicon-trash" style="align-content: center; color:#FFFFFF;">
+    <!-- button to redirect to trashbox -->
+    <li class="<%= active_page(:trash) %>">
+        <button type="button" class="btn btn-warning" style = "align-content: center;">
             <%= link_to mailbox_trash_path do %>
                 <em class="fa fa-trash-o fa-lg"></em>
                 <span>Trash</span>
             <% end %>
-        </span>
-    </button>
-  </li>
+        </button>
+    </li>
+
+    <br>
+    <!-- button to redirect home -->
+    <div class ="col-md-4">
+        <button type="button" class="btn btn-warning" style = "align-content: center;">
+            <span class="glyphicon glyphicon-home" style="align-content: center; color:#FFFFFF;">
+                <%= link_to 'Home', root_path %>
+            </span>
+        </button>
+    </div>
 
 </ul>
