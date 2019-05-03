@@ -39,19 +39,19 @@ This is the Basic Information homepage. It shows your profile picture and your b
 
 <!-- Section for Navigation Bar -->
 <div class="topnav" id="myTopnav">
-    <button type="button" class="btn btn-warning" style = "align-content: center;">
-        <span class="glyphicon glyphicon-home" style="align-content: center; color:#FFFFFF;">
-            <%= link_to 'Home', root_path %>
-        </span>
-    </button>
 
-<button type="button" class="btn btn-warning" style = "align-content: center;">
-        <span class="glyphicon glyphicon-circle-arrow-right" style="align-content: center; color:#FFFFFF;">
-          <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-      </span>
-  </button>
-<h4 style="text-align: center"> LF: Roomie</h4>
+    <%= link_to root_path, class:"btn btn-warning" do   %>
+        <i class="glyphicon glyphicon-home", style="align-content: center; color:white"> Home</i>
+    <% end %>
+
+    <%= link_to destroy_user_session_path, method: :delete, class:"btn btn-warning" do   %>
+        <i class="glyphicon glyphicon-circle-arrow-right", style="align-content: center; color:white"> Logout</i>
+    <% end %>
+
+    <h4 style="text-align: center"> LF: Roomie</h4>
+
 </div>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -88,16 +88,11 @@ This is the Basic Information homepage. It shows your profile picture and your b
     <p><%= preference.prefer%></p>
 <% end %>
 
-<button type="button" class="btn btn-warning" style = "align-content: center;">
-        <span class="glyphicon glyphicon-edit" style="align-content: center; color:#FFFFFF;">
-          <%= link_to 'Edit', edit_basic_information_path(@basic_information) %> 
-      </span>
-</button>
+<%= link_to edit_basic_information_path(@basic_information), class:"btn btn-warning" do   %>
+    <i class="glyphicon glyphicon-edit", style="align-content: center; color:white"> Edit</i>
+<% end %>
 
-<button type="button" class="btn btn-warning" style = "align-content: center;">
-        <span class="glyphicon glyphicon-star" style="align-content: center; color:#FFFFFF;">
-          <%= link_to 'View Preferences', preferences_path(current_user.id) %>
-      </span>
-</button>
-
+<%= link_to preferences_path(current_user.id), class:"btn btn-warning" do   %>
+    <i class="glyphicon glyphicon-star", style="align-content: center; color:white"> View Preferences</i>
+<% end %>
 

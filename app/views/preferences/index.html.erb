@@ -34,17 +34,13 @@ Code History:
 -->
 <p id="notice"><%= notice %></p>
 
-<button type="button" class="btn btn-warning" style = "align-content: center;">
-    <span class="glyphicon glyphicon-home" style="align-content: center; color:#FFFFFF;">
-        <%= link_to 'Home', root_path %>
-    </span>
-</button>
+<%= link_to root_path, class:"btn btn-warning" do   %>
+    <i class="glyphicon glyphicon-home", style="align-content: center; color:white"> Home</i>
+<% end %>
 
-<button type="button" class="btn btn-warning" style = "align-content: center;">
-    <span class="glyphicon glyphicon-circle-arrow-right" style="align-content: center; color:#FFFFFF;">
-        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-    </span>
-</button>
+<%= link_to destroy_user_session_path, method: :delete, class:"btn btn-warning" do   %>
+    <i class="glyphicon glyphicon-circle-arrow-right", style="align-content: center; color:white"> Logout</i>
+<% end %>
 
 <br>
 <h2>Your Preferences</h2>
@@ -85,15 +81,11 @@ Code History:
 
 <br>
 
-<button type="button" class="btn btn-warning" style = "align-content: center;">
-        <span class="glyphicon glyphicon-plus" style="align-content: center; color:#FFFFFF;">
-          <%= link_to 'Suggest A New Preference', new_preference_path %>
-      </span>
-  </button>
 
-<button type="button" class="btn btn-warning" style = "align-content: center;">
-        <span class="glyphicon glyphicon-arrow-left" style="align-content: center; color:#FFFFFF;">
-          <%= link_to 'Back To Basic Information', basic_informations_path%>
-      </span>
-</button>
+<%= link_to new_preference_path, class:"btn btn-warning" do   %>
+    <i class="glyphicon glyphicon-plus", style="align-content: center; color:white"> Suggest A New Preference</i>
+<% end %>
 
+<%= link_to basic_informations_path, class:"btn btn-warning" do   %>
+    <i class="glyphicon glyphicon-circle-arrow-left", style="align-content: center; color:white"> Back to Basic Information</i>
+<% end %>

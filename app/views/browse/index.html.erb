@@ -67,9 +67,7 @@ Code History:
 		    <% end %>
 		</p>
 
-
-
-<div class = "text-center">
+    <div class = "text-center">
 
 	<!--button type="button" class="btn btn-info" style = "align-content: center;">
     <span class="glyphicon glyphicon-remove" style="align-content: center; color:#FFFFFF;">
@@ -84,13 +82,13 @@ Code History:
 	</button-->
     
 
-    <%= link_to swipeLeft_browse_path(current_user.id), class: "btn btn-info" do %>
-        <i class="glyphicon glyphicon-remove"></i> 
-    <% end %>
+        <%= link_to swipeLeft_browse_path(current_user.id), class: "btn btn-info" do %>
+                <i class="glyphicon glyphicon-remove"></i> 
+        <% end %>
 
-	<%= link_to swipeRight_browse_path(current_user.id), class: "btn btn-success" do %>
-        <i class="glyphicon glyphicon-ok"></i> 
-    <% end %>
+	    <%= link_to swipeRight_browse_path(current_user.id), class: "btn btn-success" do %>
+            <i class="glyphicon glyphicon-ok"></i> 
+        <% end %>
 
 
 </div>
@@ -99,66 +97,56 @@ Code History:
 
 	<% end %>
 
-
 	<br><br>
 
 <div class = "text-center">
 
-	<button type="button" class="btn btn-danger" style = "align-content: center;">
-        <span class="glyphicon glyphicon-heart" style="align-content: center; color:#FFFFFF;">
-	        <%= link_to 'Show Matches', browse_path(current_user.id)  %>
-	    </span>
-	</button>
+	<%= link_to browse_path(current_user.id), class:"btn btn-danger" do %>
+        <i class="glyphicon glyphicon-heart", style="align-content: center"> Show Matches</i>
+    <% end %>
 	
 	<br><br>
 
-	<button type="button" class="btn btn-warning" style = "align-content: center;">
-        <span class="glyphicon glyphicon-user" style="align-content: center; color:#FFFFFF;">
-	        <%= link_to "View Basic Info", view_basic_info_path(current_user.id) %> 
-	    </span>
-	</button>
+	<%= link_to view_basic_info_path(current_user.id), class:"btn btn-warning" do %> 
+        <i class="glyphicon glyphicon-user", style="align-content: center; color:white"> View Basic Info</i>
+    <% end %>
 
 
-	<button type="button" class="btn btn-warning" style = "align-content: center;">
-        <span class="glyphicon glyphicon-star" style="align-content: center; color:#FFFFFF;">
-	        <%= link_to "View Preferences", preferences_path(current_user.id) %>
-	    </span>
-	</button>
+	<%= link_to preferences_path(current_user.id), class:"btn btn-warning" do  %>
+        <i class="glyphicon glyphicon-star", style="align-content: center; color:white"> View Preferences</i>
+    <% end %>
 
-	<button type="button" class="btn btn-warning" style = "align-content: center;">
-        <span class="glyphicon glyphicon-envelope" style="align-content: center; color:#FFFFFF;">
-	        <%= link_to "Messaging", mailbox_inbox_path %>
-	    </span>
-	</button>
+	<%= link_to mailbox_inbox_path, class:"btn btn-warning" do   %>
+        <i class="glyphicon glyphicon-envelope", style="align-content: center; color:white"> Messaging</i>
+    <% end %>
 
-	<button type="button" class="btn btn-warning" style = "align-content: center;">
-        <span class="glyphicon glyphicon-circle-arrow-right" style="align-content: center; color:#FFFFFF;">
-	        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-	    </span>
-	</button>
+	<%= link_to destroy_user_session_path, method: :delete, class:"btn btn-warning" do   %>
+        <i class="glyphicon glyphicon-circle-arrow-right", style="align-content: center; color:white"> Logout</i>
+    <% end %>
 </div>
 	
 <%else%>
 	<p id="notice"><%= notice %></p>
+
     <div class="container">
 
     <p style="text-align: center;"> Are you looking for a roomie? <br> LF: Roomie is a web-app that helps you browse for other "roomies" with the same preferences.</p>
         
         <!--<button type="button" class="btn">Basic</button>-->
         <div class="text-center" style="margin-bottom: 10px">
-                <button type="button" class="btn btn-light">
-  <%= link_to "Log-in", new_user_session_path %></button>
+            <button type="button" class="btn btn-light"> 
+                <%= link_to "Log-in", new_user_session_path %>
+            </button>
         </div>
        
         <div class="text-center" style="margin-bottom: 10px">
-                <button type="button" class="btn btn-secondary">
-  <%= link_to "Sign up", new_user_registration_path %></button>    
-        </div>
-
-        
-         
+            <button type="button" class="btn btn-secondary">
+                <%= link_to "Sign up", new_user_registration_path %>
+            </button>    
+        </div>       
     </div>
 
  
 <%end%>
+
 </body>

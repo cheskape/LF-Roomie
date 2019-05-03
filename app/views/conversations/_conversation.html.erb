@@ -68,11 +68,9 @@ This is the View file that shows the conversations of the user.
         <br>
 
         <!-- allows user to view the whole conversation -->
-        <button type="button" class="btn btn-warning" style = "align-content: center;">
-            <span class="glyphicon glyphicon-eye-open" style="align-content: center; color:#FFFFFF;">
-                <%= link_to "View", conversation_path(conversation)  %>
-            </span>
-        </button>
+        <%= link_to conversation_path(conversation), class:"btn btn-warning" do   %>
+            <i class="glyphicon glyphicon-eye-open", style="align-content: center; color:white"> View</i>
+        <% end %>
         
     </div>
 
@@ -81,11 +79,9 @@ This is the View file that shows the conversations of the user.
         <% if conversation.is_trashed?(current_user) %>
             <%= link_to 'Untrash', untrash_conversation_path(conversation), class: 'btn btn-info', method: :post %>
         <% else %>
-            <button type="button" class="btn btn-danger" style = "align-content: center;">
-                <span class="glyphicon glyphicon-trash" style="align-content: center; color:#FFFFFF;">
-                    <%= link_to 'Move to trash', trash_conversation_path(conversation), method: :post, data: {confirm: 'Are you sure?'} %>
-                </span>
-            </button>
+            <%= link_to trash_conversation_path(conversation), method: :post, data: {confirm: 'Are you sure?'}, class:"btn btn-danger" do   %>
+                <i class="glyphicon glyphicon-trash", style="align-content: center; color:white"> Move to Trash</i>
+            <% end %>
         <% end %>
     </div>
 </div>

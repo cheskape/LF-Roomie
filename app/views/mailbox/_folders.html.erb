@@ -37,33 +37,24 @@ This is the View file that is sort of a "mini navbar". It contains the buttons u
 <ul class="nav nav-pills nav-stacked">
     <!-- button to redirect to inbox -->
     <li class="<%= active_page(:inbox) %>">
-        <button type="button" class="btn btn-warning" style = "align-content: center;">
-            <%= link_to mailbox_inbox_path do  %>
-                <span class="label label-danger pull-right"></span>
-                <em class="fa fa-inbox fa-lg"></em>
-                <span>Inbox</span>
-            <% end %>
-        </button>
+        <%= link_to mailbox_inbox_path, class:"btn btn-warning" do   %>
+            <i class="glyphicon glyphicon-inbox", style="align-content: center; color:white"> Inbox</i>
+        <% end %>
     </li>
 
     <!-- button to redirect to trashbox -->
     <li class="<%= active_page(:trash) %>">
-        <button type="button" class="btn btn-warning" style = "align-content: center;">
-            <%= link_to mailbox_trash_path do %>
-                <em class="fa fa-trash-o fa-lg"></em>
-                <span>Trash</span>
-            <% end %>
-        </button>
+        <%= link_to mailbox_trash_path, class:"btn btn-warning" do   %>
+            <i class="glyphicon glyphicon-trash", style="align-content: center; color:white"> Trash</i>
+        <% end %>
     </li>
 
     <br>
     <!-- button to redirect home -->
     <div class ="col-md-4">
-        <button type="button" class="btn btn-warning" style = "align-content: center;">
-            <span class="glyphicon glyphicon-home" style="align-content: center; color:#FFFFFF;">
-                <%= link_to 'Home', root_path %>
-            </span>
-        </button>
+        <%= link_to root_path, class:"btn btn-warning" do   %>
+            <i class="glyphicon glyphicon-home", style="align-content: center; color:white"> Home</i>
+        <% end %>
     </div>
 
 </ul>

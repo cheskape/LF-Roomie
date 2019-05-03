@@ -42,17 +42,13 @@ Code History:
 -->
 
 
-<button type="button" class="btn btn-warning" style = "align-content: center;">
-    <span class="glyphicon glyphicon-home" style="align-content: center; color:#FFFFFF;">
-        <%= link_to 'Home', root_path %>
-    </span>
-</button>
+<%= link_to root_path, class:"btn btn-warning" do   %>
+    <i class="glyphicon glyphicon-home", style="align-content: center; color:white"> Home</i>
+<% end %>
 
-<button type="button" class="btn btn-warning" style = "align-content: center;">
-    <span class="glyphicon glyphicon-circle-arrow-right" style="align-content: center; color:#FFFFFF;">
-	    <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-	</span>
-</button>
+<%= link_to destroy_user_session_path, method: :delete, class:"btn btn-warning" do   %>
+    <i class="glyphicon glyphicon-circle-arrow-right", style="align-content: center; color:white"> Logout</i>
+<% end %>
 
 <br>
 <h2 style = "color: white">MATCHES</h2>
@@ -78,8 +74,6 @@ Code History:
 
 </div>
 
-<button type="button" class="btn btn-warning" style = "align-content: center;">
-    <span class="glyphicon glyphicon-envelope" style="align-content: center; color:#FFFFFF;">
-        <%= link_to "Messaging", mailbox_inbox_path %>
-    </span>
-</button>
+<%= link_to mailbox_inbox_path, class:"btn btn-warning" do   %>
+    <i class="glyphicon glyphicon-envelope", style="align-content: center; color:white"> Messaging</i>
+<% end %>
