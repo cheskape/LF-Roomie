@@ -34,10 +34,21 @@ Code History:
 -->
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Prefer:</strong>
-  <%= @preference.prefer %>
-</p>
+<div class="container" style="display: flex; flex-direction: row; justify-content: center; text-align: center;">
+    <div class="shadow-lg p-3 mb-5 rounded">
+        <div class="card border-dark text-dark" style="width: 20rem;">
+			<p>
+				<h3><strong>Prefer:</strong></h3>
+				<%= @preference.prefer %>
+			</p>
+		</div>
+	</div>
+</div>
 
-<%= link_to 'Add', add_preference_path(@preference), class:"btn btn-light" %>
-<%= link_to 'Back', preferences_path, class:"btn btn-light"  %>
+<%= link_to add_preference_path(@preference), class:"btn btn-warning" do   %>
+    <i class="glyphicon glyphicon-plus", style="align-content: center; color:white"> Add to Your Preferences</i>
+<% end %>
+
+<%= link_to preferences_path, class:"btn btn-warning" do   %>
+    <i class="glyphicon glyphicon-circle-arrow-left", style="align-content: center; color:white"> Back to Preferences</i>
+<% end %>

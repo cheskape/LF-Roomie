@@ -2,4 +2,6 @@
 
 <%= render 'form', basic_information: @basic_information %>
 
-<%= link_to 'Back', basic_informations_path %>
+<%= link_to basic_informations_path, class:"btn btn-warning" do   %>
+    <i class="glyphicon glyphicon-circle-arrow-left", style="align-content: center; color:white"> Back to Basic Information</i>
+<% end %>

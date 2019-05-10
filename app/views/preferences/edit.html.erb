@@ -42,4 +42,6 @@ Code History:
 
 <%= render 'form', preference: @preference %>
 
-<%= link_to 'Back', preferences_path %>
+<%= link_to preferences_path, class:"btn btn-warning" do   %>
+    <i class="glyphicon glyphicon-circle-arrow-left", style="align-content: center; color:white"> Back to Preferences</i>
+<% end %>

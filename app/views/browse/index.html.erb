@@ -31,9 +31,9 @@ Code History:
 03/15/19
     => file created
 03/20/19
-	=> 
+    => 
 03/21/19
-	=> set as root path
+    => set as root path
 *******************************************************************************************
 -->
 
@@ -41,110 +41,115 @@ Code History:
 
 <h1> LF: Roomie </h1>
 <%if user_signed_in?%>
-	
-	<!--%current_user.matches.destroy_all%-->
+    
+    <!--%current_user.matches.destroy_all%-->
 
-	<% flash.each do |key, value| %>
+    <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>
 
     <%= yield %>
 
-	<% if not @ids.empty? %>
-		<p>
-		    <h1><%= image_tag($user.profile_pic_url) if $user.profile_pic? %></h1>
-		</p>
+
+    <% if not @ids.empty? %>
+        <div class="container" style="display: flex; flex-direction: row; justify-content: center;">
+            <div class="shadow-lg p-3 mb-5 rounded">
+                <div class="card border-dark" style="width: 40rem;">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col" style="display: flex; flex-direction: column; justify-content: center;">
+                                <% if $user.profile_pic? %>
+                                    <h1><%= image_tag($user.profile_pic_url) %></h1>
+                                <% else %>
+                                    <h1><%= image_tag('default_user.jpg', height: '64', width: '64') %></h1>
+                                <% end %>
+        
+                                <h2 style="text-align: center"><%= $user.firstname %> <%= $user.lastname %></h2>
+                            </div>
+
+                            <div class="col">
+                                <h4 style="text-align: center; color: black;">Preferences: </h4>
+                                <% if $pref.empty? %>
+                                    <h5 style="text-align: center; color:black;">No Preferences</h5>
+                                <% else %>
+                                    <% $pref.each do |preference| %>
+                                        <h6 style="text-align: center; color:black;"><%= preference.prefer %></h6>
+                                    <% end %>
+                                <% end %>
+                            </div>
+
+                        </div>
+
+                        <div class="container" style="display: flex; flex-direction: row; justify-content: center;">
+                            <%= link_to swipeLeft_browse_path(current_user.id), class: "btn btn-info" do %>
+                                <i class="glyphicon glyphicon-remove"></i> 
+                            <% end %>
+                            <%= link_to swipeRight_browse_path(current_user.id), class: "btn btn-success" do %>
+                                <i class="glyphicon glyphicon-ok"></i> 
+                            <% end %>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
 
 
-		<p>
-		    <h2 style="text-align: center"><%= $user.firstname %> <%= $user.lastname %></h2>
-		</p>
+       
 
-		<p>
-			<h4 style="text-align: center">Preferences: </h4>
-		    <% $pref.each do |preference| %>
-		        <h6 style="text-align: center"><%= preference.prefer %></h6>
-		    <% end %>
-		</p>
-
-    <div class = "text-center">
-
-	<!--button type="button" class="btn btn-info" style = "align-content: center;">
-    <span class="glyphicon glyphicon-remove" style="align-content: center; color:#FFFFFF;">
-		<%= link_to '_', swipeLeft_browse_path(current_user.id) %> 
-	</span>
-	</button>
-
-	<button type="button" class="btn btn-success" style = "align-content: center;">
-    <span class="glyphicon glyphicon-ok" style="align-content: center; color:#FFFFFF;">
-		<%= link_to '_', swipeRight_browse_path(current_user.id)  %> 
-	</span>
-	</button-->
-    
-
-        <%= link_to swipeLeft_browse_path(current_user.id), class: "btn btn-info" do %>
-                <i class="glyphicon glyphicon-remove"></i> 
-        <% end %>
-
-	    <%= link_to swipeRight_browse_path(current_user.id), class: "btn btn-success" do %>
-            <i class="glyphicon glyphicon-ok"></i> 
-        <% end %>
-
-
-</div>
-	<% else %>
-		<h2>There are no more users</h2>
-
-	<% end %>
-
-	<br><br>
+    <% else %>
+        <h2>There are no more users</h2>
+    <% end %>
 
 <div class = "text-center">
-
-	<%= link_to browse_path(current_user.id), class:"btn btn-danger" do %>
+    <%= link_to browse_path(current_user.id), class:"btn btn-danger" do %>
         <i class="glyphicon glyphicon-heart", style="align-content: center"> Show Matches</i>
     <% end %>
-	
-	<br><br>
+    
+    <br><br>
 
-	<%= link_to view_basic_info_path(current_user.id), class:"btn btn-warning" do %> 
+    <%= link_to view_basic_info_path(current_user.id), class:"btn btn-warning" do %> 
         <i class="glyphicon glyphicon-user", style="align-content: center; color:white"> View Basic Info</i>
     <% end %>
 
 
-	<%= link_to preferences_path(current_user.id), class:"btn btn-warning" do  %>
+    <%= link_to preferences_path(current_user.id), class:"btn btn-warning" do  %>
         <i class="glyphicon glyphicon-star", style="align-content: center; color:white"> View Preferences</i>
     <% end %>
 
-	<%= link_to mailbox_inbox_path, class:"btn btn-warning" do   %>
+    <%= link_to mailbox_inbox_path, class:"btn btn-warning" do   %>
         <i class="glyphicon glyphicon-envelope", style="align-content: center; color:white"> Messaging</i>
     <% end %>
 
-	<%= link_to destroy_user_session_path, method: :delete, class:"btn btn-warning" do   %>
+    <%= link_to destroy_user_session_path, method: :delete, class:"btn btn-warning" do   %>
         <i class="glyphicon glyphicon-circle-arrow-right", style="align-content: center; color:white"> Logout</i>
     <% end %>
 </div>
-	
+    
 <%else%>
-	<p id="notice"><%= notice %></p>
+    <div>
+        <p id="notice"><%= notice %></p>
 
-    <div class="container">
+        <div class="container">
 
-    <p style="text-align: center;"> Are you looking for a roomie? <br> LF: Roomie is a web-app that helps you browse for other "roomies" with the same preferences.</p>
+        <p style="text-align: center;"> Are you looking for a roomie? <br> LF: Roomie is a web-app that helps you browse for other "roomies" with the same preferences.</p>
         
         <!--<button type="button" class="btn">Basic</button>-->
-        <div class="text-center" style="margin-bottom: 10px">
-            <%= link_to "Log-in", new_user_session_path, class:"btn btn-success" %>
-        </div>
+            <div class="text-center" style="margin-bottom: 10px">
+                <%= link_to "Log-in", new_user_session_path, class:"btn btn-success" %>
+            </div>
 
        
-        <div class="text-center" style="margin-bottom: 10px">
-            <%= link_to "Sign up", new_user_registration_path, class:"btn btn-secondary" %>
-        </div>       
+            <div class="text-center" style="margin-bottom: 10px">
+                <%= link_to "Sign up", new_user_registration_path, class:"btn btn-secondary" %>
+            </div>       
 
+        </div>
     </div>
 
  
 <%end%>
 
+<br><br>
 </body>

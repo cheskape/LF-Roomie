@@ -33,24 +33,24 @@ Code History:
 *******************************************************************************************
 -->
 <%= form_with(model: preference, local: true) do |form| %>
-  <% if preference.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(preference.errors.count, "error") %> prohibited this preference from being saved:</h2>
+    <% if preference.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(preference.errors.count, "error") %> prohibited this preference from being saved:</h2>
+            <ul>
+                <% preference.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
 
-      <ul>
-      <% preference.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="field">
+        <%= form.label :prefer %>
+        <%= form.text_field :prefer %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :prefer %>
-    <%= form.text_field :prefer %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="btn btn-warning">
+        <%= form.submit %>
+    </div>
+    
 <% end %>

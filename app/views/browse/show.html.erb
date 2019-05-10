@@ -52,26 +52,20 @@ Code History:
 
 <br>
 <h2 style = "color: white">MATCHES</h2>
-<div class="matches-show">
-<table>
-  <thead>
-    <tr>
-      <th>Matches</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @matches.each do |match| %>
-      <tr>
-        <td><%= User.find(match.user2).basic_information.firstname %></td>
-
-      </tr>
-    <% end %>
-  </tbody>
-
-</table>
-
+<div class="container" style="display: flex; flex-direction: row; justify-content: center;">
+    <div class="shadow-lg p-3 mb-5 rounded">
+        <div class="card border-dark text-dark" style="width: 15rem; display: flex; flex-direction: row; justify-content: center; text-align: center;">
+      		<table class="table table-striped table-bordered">
+				<tbody>
+				    <% @matches.each do |match| %>
+				    	<tr>
+				        	<td><%= User.find(match.user2).basic_information.firstname %></td>
+						</tr>
+				    <% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>
 
 <%= link_to mailbox_inbox_path, class:"btn btn-warning" do   %>

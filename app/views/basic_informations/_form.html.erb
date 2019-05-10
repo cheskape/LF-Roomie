@@ -40,60 +40,67 @@ This is the Basic Information edit form. It contains different fields for your b
 -->
 
 <%= form_with(model: basic_information, local: true) do |form| %>
-    <% if basic_information.errors.any? %>
-        <div id="error_explanation">
-            <h2><%= pluralize(basic_information.errors.count, "error") %> prohibited this basic_information from being saved:</h2>
+<div class="container" style="display: flex; flex-direction: row; justify-content: center;">
+    <div class="shadow-lg p-3 mb-5 rounded">
+        <div class="card border-dark" style="width: 40rem;">
+            <% if basic_information.errors.any? %>
+                <div id="error_explanation">
+                    <h2><%= pluralize(basic_information.errors.count, "error") %> prohibited this basic_information from being saved:</h2>
+                    <ul>
+                        <% basic_information.errors.full_messages.each do |message| %>
+                            <li><%= message %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
 
-            <ul>
-                <% basic_information.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-                <% end %>
-            </ul>
+            <div class="field" style="text-align: center;">
+
+                <b><%= form.label :profile_pic %></b>
+                <%= image_tag(@basic_information.profile_pic_url) if @basic_information.profile_pic? %>
+                <%= form.file_field :profile_pic, accept: 'image/jpeg,image/gif,image/png', style: "width:100%" %>
+
+                <p>
+                    <label>
+                        <%= form.check_box :remove_profile_pic %>
+                        Remove profile_pic
+                    </label>
+                </p>
+            </div>
+
+
+            <div class="field">
+                <b><%= form.label :firstname %></b>
+                <%= form.text_field :firstname, required: true %>
+            </div>
+
+            <div class="field">
+                <b><%= form.label :lastname %></b>
+                <%= form.text_field :lastname, required: true %>
+            </div>
+
+                   
+
+            <div class="field">
+                <b><%= form.label :birthday, "Birthday" %></b>
+                <%= form.date_field :birthday %>
+            </div>
+
+            <div class="field">
+                <b><%= form.label :address %></b>
+                <%= form.text_area :address %>
+            </div>
+
+            <div class="field">
+                <b><%= form.label :sex %></b>
+                <%= form.radio_button :sex, "Male" %> Male
+                <%= form.radio_button :sex, "Female" %> Female
+            </div>
+
+            <div class="btn btn-success">
+                <%= form.submit %>
+            </div>
         </div>
-    <% end %>
-
-
-    <div class="field">
-        <%= form.label :firstname %>
-        <%= form.text_field :firstname, required: true %>
     </div>
-
-    <div class="field">
-        <%= form.label :lastname %>
-        <%= form.text_field :lastname, required: true %>
-    </div>
-
-    <div class="field" style="text-align: center;">
-
-        <%= form.label :profile_pic %>
-        <%= image_tag(@basic_information.profile_pic_url) if @basic_information.profile_pic? %>
-        <%= form.file_field :profile_pic, accept: 'image/jpeg,image/gif,image/png', style: "width:100%" %>
-
-        <p>
-        <label>
-          <%= form.check_box :remove_profile_pic %>
-          Remove profile_pic
-        </label>
-        </p>
-    </div>
-
-    <div class="field">
-        <%= form.label :birthday, "Birthday" %>
-        <%= form.date_field :birthday %>
-    </div>
-
-    <div class="field">
-        <%= form.label :address %>
-        <%= form.text_area :address %>
-    </div>
-
-    <div class="field">
-        <%= form.label :sex %>
-        <%= form.radio_button :sex, "Male" %> Male
-        <%= form.radio_button :sex, "Female" %> Female
-    </div>
-
-    <div class="actions">
-        <%= form.submit %>
-    </div>
+</div>
 <% end %>

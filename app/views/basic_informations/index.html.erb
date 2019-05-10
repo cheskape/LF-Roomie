@@ -38,7 +38,7 @@ This is the Basic Information homepage. It shows your profile picture and your b
 -->
 
 <!-- Section for Navigation Bar -->
-<div class="topnav" id="myTopnav">
+<div>
 
     <%= link_to root_path, class:"btn btn-warning" do   %>
         <i class="glyphicon glyphicon-home", style="align-content: center; color:white"> Home</i>
@@ -48,45 +48,65 @@ This is the Basic Information homepage. It shows your profile picture and your b
         <i class="glyphicon glyphicon-circle-arrow-right", style="align-content: center; color:white"> Logout</i>
     <% end %>
 
-    <h4 style="text-align: center"> LF: Roomie</h4>
+    <h1 style="text-align: center"> LF: Roomie</h1>
 
 </div>
 
 <p id="notice"><%= notice %></p>
 
-<p>
-    <%= image_tag(@basic_information.profile_pic_url) if @basic_information.profile_pic? %>
-</p>
+<!--div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+  <div class="card-body">
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div-->
+<div class="container" style="display: flex; flex-direction: row; justify-content: center;">
+    <div class="card border-dark text-dark" style="width:30rem;">
+        <p>
+            <%= image_tag(@basic_information.profile_pic_url) if @basic_information.profile_pic? %>
+        </p>
 
 
-<p>
-  Hello,
-  <h2><%= @basic_information.firstname %> <%= @basic_information.lastname %></h2>
-</p>
+        <div class="card-body">
+          <h2 class="card-header bg-secondary border-dark"><%= @basic_information.firstname %> <%= @basic_information.lastname %></h2>
+        </div>
 
+        <ul class="list-group list-group-flash">
+            <li class="list-group-item">                
+                <strong>Birthday:</strong>
+                <i><%= @basic_information.birthday %></i>                
+            </li>
+            
 
+            <li class="list-group-item">
+                <strong>Address:</strong>
+                <%= @basic_information.address %>
+            </li>
 
-<p>
-  <strong>Birthday:</strong>
-  <%= @basic_information.birthday %>
-</p>
+            <li class="list-group-item">
+                <strong>Sex:</strong>
+                <%= @basic_information.sex %>
+            </li>
 
-<p>
-  <strong>Address:</strong>
-  <%= @basic_information.address %>
-</p>
-
-<p>
-  <strong>Sex:</strong>
-  <%= @basic_information.sex %>
-</p>
-
-<p>
-  <strong>Preferences: </strong>
-</p>
-<% @preferences.each do |preference|%>
-    <p><%= preference.prefer%></p>
-<% end %>
+            <li class="list-group-item">
+                <strong>Preferences: </strong>
+                <% @preferences.each do |preference|%>
+                    <p><%= preference.prefer%></p>
+                <% end %>
+            </li>
+        </ul>
+    </div>
+</div>
 
 <%= link_to edit_basic_information_path(@basic_information), class:"btn btn-warning" do   %>
     <i class="glyphicon glyphicon-edit", style="align-content: center; color:white"> Edit</i>
@@ -95,4 +115,3 @@ This is the Basic Information homepage. It shows your profile picture and your b
 <%= link_to preferences_path(current_user.id), class:"btn btn-warning" do   %>
     <i class="glyphicon glyphicon-star", style="align-content: center; color:white"> View Preferences</i>
 <% end %>
-

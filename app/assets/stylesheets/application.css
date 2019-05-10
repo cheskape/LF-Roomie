@@ -161,12 +161,16 @@ button {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.match-show{
+    
+}
+
 .preferences-show{
     text-align: left;
     /*margin: 0px, 500px, 500px, 500px;*/
     background: white;
     width:300px;
-  align-content: left;
+  align-content: center;
   margin: 0px 500px 0px 500px;
   color: black;
   font-family: 'Raleway', sans-serif;

@@ -40,49 +40,55 @@ This is the View file that shows the conversations of the user.
 <!-- variable for saving the recepient -->
 <% chat = current_user %>
 
-<div class="media">
-    <div class="media-left">
-        <a href="#">
-            <!-- gets the info of the recepient -->
-            <% conversation.recipients.each do |u|%>
-                <% if not u == current_user %>
-                    <% chat = u %>
-                <% end %>
-            <%end%>
+<div class="container" style="display: flex; flex-direction: row; justify-content: center;">
+    <div class="shadow-lg p-2 mb-4 rounded">
+        <div class="card border-dark text-dark" style="width: 30rem">
+            <div class="container p-3">
+                <div class="media-left">
+                    <a href="#">
+                        <!-- gets the info of the recepient -->
+                        <% conversation.recipients.each do |u|%>
+                            <% if not u == current_user %>
+                                <% chat = u %>
+                            <% end %>
+                        <%end%>
 
-            <!-- shows the picture of the recepient -->
-            <%= image_tag(chat.basic_information.profile_pic_url) if chat.basic_information .profile_pic? %>
-        </a>
-    </div>
+                        <!-- shows the picture of the recepient -->
+                        <% if chat.basic_information.profile_pic? %>
+                            <h1><%= image_tag(chat.basic_information.profile_pic_url) %></h1>
+                        <% else %>
+                            <h1><%= image_tag('default_user.jpg', height: '64', width: '64') %></h1>
+                        <% end %>
+                    </a>
+                </div>
 
-    <!-- shows the info of the conversation -->
-    <div class="media-body">
-        <h4 class="media-heading">
+                <!-- shows the info of the conversation -->
+                <div class="media-body">
+                    <h4 class="media-heading">
 
-            <!-- shows the name of the recepient, date, time, and of the last message -->
-            <%= chat.basic_information.firstname %> <br>
-            <small><b>Date: </b><%=  conversation.messages.last.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></small>
-        </h4>
+                        <!-- shows the name of the recepient, date, time, and of the last message -->
+                        <h2><b><%= chat.basic_information.firstname %></b></h2> <br>
+                        <small><b>Date: </b><%=  conversation.messages.last.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></small>
+                    </h4>
+                    <h5>Recent message:</h5> &nbsp;&nbsp;&nbsp;
+                    <%= conversation.messages.last.sender.basic_information.firstname %>: <%= truncate conversation.messages.last.body, length: 145 %>
+                    <br>
 
-        <%= conversation.messages.last.sender.basic_information.firstname %>: <%= truncate conversation.messages.last.body, length: 145 %>
-        <br>
-
-        <!-- allows user to view the whole conversation -->
-        <%= link_to conversation_path(conversation), class:"btn btn-warning" do   %>
-            <i class="glyphicon glyphicon-eye-open", style="align-content: center; color:white"> View</i>
-        <% end %>
-        
-    </div>
-
-    <!-- allows user to trash a message -->
-    <div class="col-md-6 text-right">
-        <% if conversation.is_trashed?(current_user) %>
-            <%= link_to 'Untrash', untrash_conversation_path(conversation), class: 'btn btn-info', method: :post %>
-        <% else %>
-            <%= link_to trash_conversation_path(conversation), method: :post, data: {confirm: 'Are you sure?'}, class:"btn btn-danger" do   %>
-                <i class="glyphicon glyphicon-trash", style="align-content: center; color:white"> Move to Trash</i>
-            <% end %>
-        <% end %>
+                    <!-- allows user to view the whole conversation -->
+                    <%= link_to conversation_path(conversation), class:"btn btn-warning" do   %>
+                        <i class="glyphicon glyphicon-eye-open", style="align-content: center; color:white"> View</i>
+                    <% end %>
+                    
+                    <!-- allows user to trash a message -->
+                    <% if conversation.is_trashed?(current_user) %>
+                        <%= link_to 'Untrash', untrash_conversation_path(conversation), class: 'btn btn-info', method: :post %>
+                    <% else %>
+                        <%= link_to trash_conversation_path(conversation), method: :post, data: {confirm: 'Are you sure?'}, class:"btn btn-danger" do   %>
+                            <i class="glyphicon glyphicon-trash", style="align-content: center; color:white"> Move to Trash</i>
+                        <% end %>
+                    <% end %> 
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-<br>
